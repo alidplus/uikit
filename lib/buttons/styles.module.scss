@@ -1,0 +1,19 @@
+.btn {
+
+  &.primary {}
+  &.secondary {}
+  &.tertiary {}
+  &.destructive {}
+  &.disabled {}
+  &.small {}
+  &.large {}
+  &.outline {}
+  &.block {}
+  &.loading {}
+  &.hasIconStart {
+    .iconStart {}
+  }
+  &.hasIconEnd {
+    .iconEnd {}
+  }
+}
