@@ -3,6 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": ["dist"],
+  "main": "./dist/uikit.umd.cjs",
+  "module": "./dist/uikit.js",
+  "types": "./dist/uikit.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/uikit.js",
+      "require": "./dist/uikit.umd.cjs",
+      "types": "./dist/uikit.d.ts"
+    },
+    "./style.css": "./dist/uikit.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -16,6 +28,9 @@
     "classnames": "^2.5.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
+  },
+  "publishConfig": {
+    "@alidplus:registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.3",

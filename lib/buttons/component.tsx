@@ -9,6 +9,8 @@ interface Props extends ComponentProps<'button'> {
 
 type TExternalVariants = Omit<IVariants, keyof Props | 'hasIconStart' | 'hasIconEnd'>;
 
+export type ButtonProps = TExternalVariants & Props;
+
 export function Button({
   children,
   variant,
@@ -20,7 +22,7 @@ export function Button({
   icStart,
   icEnd,
   ...btnProps
-}: PropsWithChildren<ComponentProps<'button'> & TExternalVariants & Props>) {
+}: PropsWithChildren<ButtonProps>) {
   const className = cn(
     variants({
       variant: variant,

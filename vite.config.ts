@@ -12,7 +12,16 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), dts()],
+  plugins: [react(), dts(
+    {
+      tsconfigPath: './tsconfig.app.json',
+    include: ['lib/', 'lib/main.ts'],
+    exclude: [
+      'lib/**/stories.tsx',
+    ],
+    outDir: 'dist',
+  }
+)],
   test: {
     projects: [{
       extends: true,
@@ -46,12 +55,12 @@ export default defineConfig({
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['vue'],
+      external: ['react', 'react-dom', 'class-variance-authority', 'classnames'],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          vue: 'Vue',
+          react: 'react',
         },
       },
     },
