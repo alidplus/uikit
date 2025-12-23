@@ -1,7 +1,41 @@
-import { Story, Meta, Canvas } from '@storybook/addon-docs/blocks';
-import * as Stories from './stories';
+import { Story, Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as Stories from "./stories";
 
 <Meta of={Stories} />
 
+## Primary Variant
+
 <Canvas of={Stories.Primary} />
-<Story of={Stories.Primary} />
+<Canvas of={Stories.PrimaryWithIcons} />
+<Canvas of={Stories.PrimaryOutline} />
+<Canvas of={Stories.PrimaryOutlineWithIcons} />
+
+## Secondary Variant
+
+<Canvas of={Stories.Secondary} />
+<Canvas of={Stories.SecondaryWithIcons} />
+<Canvas of={Stories.SecondaryOutline} />
+<Canvas of={Stories.SecondaryOutlineWithIcons} />
+
+## Tertiary Variant
+
+<Canvas of={Stories.Tertiary} />
+<Canvas of={Stories.TertiaryWithIcons} />
+
+## Destructive Variant
+
+<Canvas of={Stories.Destructive} />
+<Canvas of={Stories.DestructiveWithIcons} />
+<Canvas of={Stories.DestructiveOutline} />
+<Canvas of={Stories.DestructiveOutlineWithIcons} />
+
+## Sizes
+
+<Canvas of={Stories.Small} />
+<Canvas of={Stories.Large} />
+
+## States
+
+<Canvas of={Stories.Disabled} />
+<Canvas of={Stories.Loading} />
+<Canvas of={Stories.Block} />
