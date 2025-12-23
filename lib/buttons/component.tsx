@@ -1,10 +1,11 @@
 import { variants, type IVariants } from './cva';
 import cn from 'classnames';
-import { type ComponentProps, type PropsWithChildren } from 'react';
+import { type ComponentProps, type PropsWithChildren, type ReactNode } from 'react';
+import css from './styles.module.scss';
 
 interface Props extends ComponentProps<'button'> {
-  icStart?: string;
-  icEnd?: string;
+  icStart?: ReactNode;
+  icEnd?: ReactNode;
 }
 
 type TExternalVariants = Omit<IVariants, keyof Props | 'hasIconStart' | 'hasIconEnd'>;
@@ -23,6 +24,9 @@ export function Button({
   icEnd,
   ...btnProps
 }: PropsWithChildren<ButtonProps>) {
+  const hasIconStart = !!icStart;
+  const hasIconEnd = !!icEnd;
+  
   const className = cn(
     variants({
       variant: variant,
@@ -31,25 +35,37 @@ export function Button({
       outline: outline,
       block: block,
       loading: loading,
+      hasIconStart: hasIconStart,
+      hasIconEnd: hasIconEnd,
     }),
     extClassName,
   );
+  
+  const renderIcon = (icon: ReactNode | string, position: 'start' | 'end') => {
+    if (!icon) return null;
+    
+    const iconClassName = position === 'start' ? css.iconStart : css.iconEnd;
+    
+    if (typeof icon === 'string') {
+      // Support for Bootstrap icons or other icon class strings
+      return <i className={`bi ${icon} ${iconClassName}`} aria-hidden="true" />;
+    }
+    
+    // Support for React components or JSX
+    return <span className={iconClassName}>{icon}</span>;
+  };
+  
   return (
     <button className={className} {...btnProps}>
       {loading ? (
         <span
-          // as="span"
-          // animation="border"
-          // size="sm"
-          // role="status"
-          // aria-hidden="true"
-          // className="me-2"
+          className={css.loadingSpinner}
+          role="status"
+          aria-hidden="true"
         />
-      ) : icStart ? (
-        <i className={`bi ${icStart} me-2`}></i>
-      ) : null}
+      ) : renderIcon(icStart, 'start')}
       {typeof children === 'string' ? <span>{children}</span> : children}
-      {icEnd ? <i className={`bi ${icEnd} me-2`}></i> : null}
+      {renderIcon(icEnd, 'end')}
     </button>
   );
 }

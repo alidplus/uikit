@@ -1,20 +1,228 @@
 .btn {
-  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
   
-  &.primary {}
-  &.secondary {}
-  &.tertiary {}
-  &.destructive {}
-  &.disabled {}
-  &.small {}
-  &.large {}
-  &.outline {}
-  &.block {}
-  &.loading {}
-  &.hasIconStart {
-    .iconStart {}
+  // Default size (medium)
+  padding: 8px 16px;
+  height: 40px;
+  
+  // Primary variant
+  &.primary {
+    background-color: #b5ff00;
+    color: #151515;
+    
+    &:hover:not(:disabled) {
+      background-color: #c5ff33;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #a5e600;
+    }
+    
+    // Primary outline variant
+    &.outline {
+      background-color: transparent;
+      border: 1px solid #b5ff00;
+      color: #b5ff00;
+      
+      &:hover:not(:disabled) {
+        background-color: #292929;
+        border-color: #c5ff33;
+        color: #c5ff33;
+      }
+      
+      &:active:not(:disabled) {
+        background-color: #292929;
+        opacity: 0.8;
+        border-color: #a5e600;
+        color: #a5e600;
+      }
+    }
   }
+  
+  // Secondary variant
+  &.secondary {
+    background-color: #292929;
+    color: #ffffff;
+    
+    &:hover:not(:disabled) {
+      background-color: #1f1f1f;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #1f1f1f;
+      opacity: 0.8;
+    }
+    
+    // Secondary outline variant
+    &.outline {
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      color: #ffffff;
+      
+      &:hover:not(:disabled) {
+        background-color: #292929;
+      }
+      
+      &:active:not(:disabled) {
+        background-color: #292929;
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  // Tertiary variant
+  &.tertiary {
+    background-color: transparent;
+    color: #ffffff;
+    
+    &:hover:not(:disabled) {
+      background-color: #292929;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #1f1f1f;
+    }
+  }
+  
+  // Destructive variant
+  &.destructive {
+    background-color: #f04438;
+    color: #ffffff;
+    
+    &:hover:not(:disabled) {
+      background-color: #f2554a;
+    }
+    
+    &:active:not(:disabled) {
+      background-color: #d93a2e;
+    }
+    
+    // Destructive outline variant
+    &.outline {
+      background-color: transparent;
+      border: 1px solid #f04438;
+      color: #f04438;
+      
+      &:hover:not(:disabled) {
+        background-color: rgba(240, 68, 56, 0.1);
+        border-color: #f2554a;
+        color: #f2554a;
+      }
+      
+      &:active:not(:disabled) {
+        background-color: rgba(240, 68, 56, 0.2);
+        border-color: #d93a2e;
+        color: #d93a2e;
+      }
+    }
+  }
+  
+  // Outline variant (fallback for other variants when implemented)
+  &.outline {
+    background-color: transparent;
+    border: 1px solid currentColor;
+  }
+  
+  // Disabled state
+  &.disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  
+  // Size variants
+  &.small {
+    padding: 6px 12px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  &.large {
+    padding: 12px 24px;
+    height: 48px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+  
+  // Block variant (full width)
+  &.block {
+    width: 100%;
+  }
+  
+  // Loading state
+  &.loading {
+    cursor: wait;
+    pointer-events: none;
+  }
+  
+  // Icon spacing
+  &.hasIconStart {
+    .iconStart {
+      display: inline-flex;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
   &.hasIconEnd {
-    .iconEnd {}
+    .iconEnd {
+      display: inline-flex;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.iconStart,
+.iconEnd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  
+  i {
+    font-size: 20px;
+    line-height: 1;
+  }
+  
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.loadingSpinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
