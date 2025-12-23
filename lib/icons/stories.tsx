@@ -15,7 +15,10 @@ const meta: Meta<typeof Gamepad> = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     size: { control: 'number' },
-    weight: { control: 'select', options: ['Broken', 'LineDuotone', 'Linear', 'Outline', 'Bold', 'BoldDuotone'] },
+    weight: {
+      control: 'select',
+      options: ['Broken', 'LineDuotone', 'Linear', 'Outline', 'Bold', 'BoldDuotone'],
+    },
     mirrored: { control: 'boolean' },
     color: { control: 'color' },
   },

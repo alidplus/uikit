@@ -2,8 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { fn } from 'storybook/test';
 
-import { sizeOptions, variantOptions } from './cva';
 import { Button } from './component';
+import { sizeOptions, variantOptions } from './cva';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Button> = {

@@ -10,8 +10,7 @@ export const variants = cva(css.root, {
   variants: {
     size: sizesConfig,
   },
-  defaultVariants: {
-  },
+  defaultVariants: {},
 });
 
 export type IVariants = VariantProps<typeof variants>;
