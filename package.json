@@ -1,6 +1,6 @@
 {
-  "name": "uikit",
-  "private": true,
+  "name": "@alidplus/uikit",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "files": ["dist"],
@@ -30,7 +30,7 @@
     "react-dom": "^19.2.0"
   },
   "publishConfig": {
-    "@alidplus:registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.3",
