@@ -1,4 +1,4 @@
-name: Publish package to GitHub Packages
+name: Publish UIKIT to GitHub Packages
 
 on:
   push:
@@ -13,26 +13,43 @@ jobs:
       packages: write
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout
+        uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com
 
-      - run: npm ci
-      - run: npm run build
+      - name: Install
+        run: npm ci
 
+      - name: Build
+        run: npm run build
+
+      # Safety check: confirm dist exists so you don't publish empty package
+      - name: Verify build output exists
+        run: |
+          test -d dist || (echo "dist/ not found. Build likely failed or outputs elsewhere." && exit 1)
+          ls -la dist
+
+      # Recommended: keep package.json version aligned with tag
       - name: Verify tag matches package.json version
         run: |
           TAG="${GITHUB_REF_NAME}"
           VERSION_FROM_TAG="${TAG#v}"
           VERSION_FROM_PKG="$(node -p "require('./package.json').version")"
+
+          echo "Tag version:  $VERSION_FROM_TAG"
+          echo "package.json: $VERSION_FROM_PKG"
+
           if [ "$VERSION_FROM_TAG" != "$VERSION_FROM_PKG" ]; then
-            echo "ERROR: Tag ($VERSION_FROM_TAG) != package.json ($VERSION_FROM_PKG)"
+            echo "ERROR: Tag version ($VERSION_FROM_TAG) does not match package.json ($VERSION_FROM_PKG)."
             exit 1
           fi
 
-      - run: npm publish
+      - name: Publish
+        run: npm publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
