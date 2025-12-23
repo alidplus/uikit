@@ -6,37 +6,39 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/uikit.umd.cjs",
-  "module": "./dist/uikit.js",
-  "types": "./dist/uikit.d.ts",
+  "main": "./dist/main.umd.cjs",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/uikit.js",
-      "require": "./dist/uikit.umd.cjs",
-      "types": "./dist/uikit.d.ts"
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js",
+      "require": "./dist/main.umd.cjs",
+      "default": "./dist/main.js"
     },
-    "./style.css": "./dist/uikit.css"
+    "./style.css": "./dist/main.css"
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
+    "lint": "eslint . --fix",
+    "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "peerDependencies": {
+  "dependencies": {
     "class-variance-authority": "^0.7.1",
-    "classnames": "^2.5.1",
-    "react": "*",
-    "react-dom": "*"
+    "classnames": "^2.5.1"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": { "optional": false }
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
-    "class-variance-authority": "^0.7.1",
-    "classnames": "^2.5.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "@chromatic-com/storybook": "^4.1.3",

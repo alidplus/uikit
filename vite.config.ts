@@ -12,16 +12,18 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), dts(
-    {
+  plugins: [
+    react(),
+    dts({
       tsconfigPath: './tsconfig.app.json',
-    include: ['lib/', 'lib/main.ts'],
-    exclude: [
-      'lib/**/stories.tsx',
-    ],
-    outDir: 'dist',
-  }
-)],
+      include: ['lib/', 'lib/main.ts'],
+      exclude: [
+        'lib/**/stories.tsx',
+      ],
+      outDir: 'dist',
+      
+    })
+  ],
   test: {
     projects: [{
       extends: true,
@@ -50,17 +52,26 @@ export default defineConfig({
       entry: path.resolve(__dirname, 'lib/main.ts'),
       name: 'UIKit',
       // the proper extensions will be added
-      fileName: 'uikit',
+      fileName: 'main',
+      formats: ['es'],
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ['react', 'react-dom', 'class-variance-authority', 'classnames'],
+      external: [
+        'react',
+        'react-dom', 
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+        'class-variance-authority',
+        'classnames'
+      ],
       output: {
         // Provide global variables to use in the UMD build
         // for externalized deps
         globals: {
-          react: 'react',
+          react: 'React',
+          "react-dom": "ReactDOM"
         },
       },
     },
