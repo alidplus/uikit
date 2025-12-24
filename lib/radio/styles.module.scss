@@ -1,5 +1,165 @@
 .root {
-  &.small {}
-  &.large {}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  
+  &.withLabel {
+    gap: 8px;
+  }
+}
+
+.radioWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.radio {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid #e5e5e5;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  // Default size
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 999px; // Circular
+  background-color: #f8f8f8;
+  
+  // Unchecked state
+  &:not(:checked) {
+    background-color: #f8f8f8;
+    border-color: #e5e5e5;
+    
+    &:hover:not(:disabled) {
+      background-color: #f0f0f0;
+      border-color: #e5e5e5;
+    }
+    
+    &:active:not(:disabled),
+    &:focus-visible:not(:disabled) {
+      background-color: #e5e5e5;
+      border-color: #e5e5e5;
+    }
+    
+    &:focus-visible:not(:disabled) {
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px rgba(181, 255, 0, 0.2);
+    }
+  }
+  
+  // Checked state
+  &:checked {
+    background-color: #b5ff00;
+    border-color: #b5ff00;
+    
+    // Inner dot
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      background-color: #406300;
+    }
+    
+    &:hover:not(:disabled) {
+      background-color: #d2ff50;
+      border-color: #d2ff50;
+    }
+    
+    &:active:not(:disabled),
+    &:focus-visible:not(:disabled) {
+      background-color: #9de600;
+      border-color: #9de600;
+    }
+    
+    &:focus-visible:not(:disabled) {
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05), 0px 0px 0px 4px rgba(181, 255, 0, 0.2);
+    }
+  }
+  
+  // Disabled state
+  &:disabled {
+    background-color: #d4d4d4;
+    border-color: #e5e5e5;
+    cursor: not-allowed;
+    opacity: 1;
+    
+    &:checked {
+      background-color: #d4d4d4;
+      border-color: #e5e5e5;
+      
+      &::after {
+        background-color: #a3a3a3;
+      }
+    }
+  }
+  
+  // Size variants
+  &.small {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    
+    &:checked::after {
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+    }
+  }
+  
+  &.large {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    
+    &:checked::after {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+    }
+  }
+}
+
+.label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0;
+  color: #a3a3a3;
+  cursor: pointer;
+  user-select: none;
+  
+  .root:has(.radio:disabled) & {
+    color: #737373;
+    cursor: not-allowed;
+  }
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: #e5e5e5;
+  user-select: none;
+  
+  .root:has(.radio:disabled) & {
+    color: #a3a3a3;
+  }
 }
 

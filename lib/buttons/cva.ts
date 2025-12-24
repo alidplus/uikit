@@ -13,6 +13,10 @@ const sizesConfig = {
   lg: css.large,
 } as const;
 
+const iconOnlyConfig = {
+  true: css.iconOnly,
+} as const;
+
 export const variants = cva(css.btn, {
   variants: {
     variant: variantsConfig,
@@ -35,6 +39,9 @@ export const variants = cva(css.btn, {
     hasIconEnd: {
       true: css.hasIconEnd,
     },
+    iconOnly: {
+      true: css.iconOnly,
+    }
   },
   defaultVariants: {
     variant: 'primary',
@@ -45,3 +52,4 @@ export type IVariants = VariantProps<typeof variants>;
 
 export const sizeOptions = Object.keys(sizesConfig);
 export const variantOptions = Object.keys(variantsConfig);
+export const iconoptions = Object.keys(iconOnlyConfig);

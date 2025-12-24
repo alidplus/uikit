@@ -6,13 +6,15 @@ const sizesConfig = {
   lg: css.large,
 } as const;
 
-export const variants = cva(css.root, {
+export const variants = cva('', {
   variants: {
     size: sizesConfig,
   },
-  defaultVariants: {},
+  defaultVariants: {
+  },
 });
 
 export type IVariants = VariantProps<typeof variants>;
 
 export const sizeOptions = Object.keys(sizesConfig);
+
