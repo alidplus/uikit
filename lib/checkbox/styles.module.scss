@@ -18,7 +18,7 @@
   height: 20px;
   min-width: 20px;
   min-height: 20px;
-  border-radius: 36px; // Circular
+  border-radius: 4px; // Circular
   border: 1px solid #e5e5e5;
   background-color: #f8f8f8;
   cursor: pointer;
@@ -66,8 +66,8 @@
     &::after {
       content: '';
       position: absolute;
-      width: 12px;
-      height: 8px;
+      width: 10px;
+      height: 6px;
       border-left: 2px solid #ffffff;
       border-bottom: 2px solid #ffffff;
       transform: rotate(-45deg);

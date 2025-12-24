@@ -1,7 +1,7 @@
+import { variants, type IVariants } from './cva';
 import cn from 'classnames';
 import { type ComponentProps, type ReactNode, useId } from 'react';
 import css from './styles.module.scss';
-import { variants, type IVariants } from './cva';
 
 interface Props extends Omit<ComponentProps<'input'>, 'size'> {
   label?: ReactNode;
@@ -69,3 +69,4 @@ export function Radio({
 }
 
 Radio.displayName = 'Radio';
+

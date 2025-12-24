@@ -1,7 +1,8 @@
+import { variants, type IVariants } from './cva';
 import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren, type ReactNode } from 'react';
-import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
+import { SolarProvider } from '@solar-icons/react';
 
 interface Props extends ComponentProps<'button'> {
   icStart?: ReactNode;
@@ -23,11 +24,12 @@ export function Button({
   block,
   icStart,
   icEnd,
+  iconOnly,
   ...btnProps
 }: PropsWithChildren<ButtonProps>) {
-  const hasIconStart = !!icStart;
+  const hasIconStart = !!icStart && !iconOnly;
   const hasIconEnd = !!icEnd;
-
+  
   const className = cn(
     variants({
       variant: variant,
@@ -38,28 +40,29 @@ export function Button({
       loading: loading,
       hasIconStart: hasIconStart,
       hasIconEnd: hasIconEnd,
-      iconOnly: hasIconStart && !hasIconEnd && !children,
+      iconOnly: iconOnly,
     }),
     extClassName,
   );
-
-  const renderIcon = (icon: ReactNode | string, position: 'start' | 'end') => {
+  
+  const renderIcon = (icon: ReactNode | string) => {
     if (!icon) return null;
-
-    const iconClassName = position === 'start' ? css.iconStart : css.iconEnd;
     
-    return <span className={iconClassName}>{icon}</span>;
+    // Support for React components or JSX
+    return <SolarProvider value={{ size: 20 }}>{icon}</SolarProvider>;
   };
-
+  
   return (
     <button className={className} {...btnProps}>
       {loading ? (
-        <span className={css.loadingSpinner} role="status" aria-hidden="true" />
-      ) : (
-        renderIcon(icStart, 'start')
-      )}
+        <span
+          className={css.loadingSpinner}
+          role="status"
+          aria-hidden="true"
+        />
+      ) : renderIcon(icStart)}
       {typeof children === 'string' ? <span>{children}</span> : children}
-      {renderIcon(icEnd, 'end')}
+      {renderIcon(icEnd)}
     </button>
   );
 }

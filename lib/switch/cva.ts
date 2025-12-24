@@ -10,9 +10,11 @@ export const variants = cva('', {
   variants: {
     size: sizesConfig,
   },
-  defaultVariants: {},
+  defaultVariants: {
+  },
 });
 
 export type IVariants = VariantProps<typeof variants>;
 
 export const sizeOptions = Object.keys(sizesConfig);
+
