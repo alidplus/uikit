@@ -1,9 +1,8 @@
-import { variants, type IVariants } from './cva';
 import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren } from 'react';
+import { variants, type IVariants } from './cva';
 
-interface Props extends ComponentProps<'div'> {
-}
+interface Props extends ComponentProps<'div'> {}
 
 type TExternalVariants = Omit<IVariants, keyof Props>;
 
@@ -18,7 +17,7 @@ export function Drawer({
   const className = cn(
     variants({
       size: size,
-      class: extClassName
+      class: extClassName,
     }),
   );
   return (
@@ -29,4 +28,3 @@ export function Drawer({
 }
 
 Drawer.displayName = 'Drawer';
-

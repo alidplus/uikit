@@ -1,24 +1,26 @@
-import { variants, type IVariants } from './cva';
 import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren } from 'react';
+import type { InputProps, IOptionValue } from '../types';
+import { variants, type IVariants } from './cva';
 
-interface Props extends ComponentProps<'div'> {
+interface Props<T extends IOptionValue> extends InputProps<T> {
+  options: IOptionValue[];
 }
 
-type TExternalVariants = Omit<IVariants, keyof Props>;
+export type DropdownProps<T extends IOptionValue> = Omit<IVariants, keyof Props<T>> &
+  Omit<ComponentProps<'div'>, keyof InputProps<T>> &
+  Props<T>;
 
-export type DropdownProps = TExternalVariants & Props;
-
-export function Dropdown({
+export function Dropdown<T extends IOptionValue>({
   size,
   className: extClassName,
   children,
   ...restProps
-}: PropsWithChildren<DropdownProps>) {
+}: PropsWithChildren<DropdownProps<T>>) {
   const className = cn(
     variants({
       size: size,
-      class: extClassName
+      class: extClassName,
     }),
   );
   return (
@@ -29,4 +31,3 @@ export function Dropdown({
 }
 
 Dropdown.displayName = 'Dropdown';
-

@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { Select } from './component';
 import { sizeOptions } from './cva';
-import { Icon } from './component';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta: Meta<typeof Icon> = {
-  title: 'Components/Icon',
-  component: Icon,
+const meta: Meta<typeof Select> = {
+  title: 'Components/Select',
+  component: Select,
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -15,16 +15,16 @@ const meta: Meta<typeof Icon> = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    size: { control: 'select', options: sizeOptions },
+    size: { control: 'select', options: sizeOptions }, 
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: { children: 'content' },
+  args: { children: 'Select an option' },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Default: Story = {
   args: {},
 };

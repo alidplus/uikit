@@ -1,6 +1,6 @@
-import { variants, type IVariants } from './cva';
 import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren, type ReactNode } from 'react';
+import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
 interface Props extends ComponentProps<'button'> {
@@ -27,7 +27,7 @@ export function Button({
 }: PropsWithChildren<ButtonProps>) {
   const hasIconStart = !!icStart;
   const hasIconEnd = !!icEnd;
-  
+
   const className = cn(
     variants({
       variant: variant,
@@ -42,24 +42,22 @@ export function Button({
     }),
     extClassName,
   );
-  
+
   const renderIcon = (icon: ReactNode | string, position: 'start' | 'end') => {
     if (!icon) return null;
-    
+
     const iconClassName = position === 'start' ? css.iconStart : css.iconEnd;
     
     return <span className={iconClassName}>{icon}</span>;
   };
-  
+
   return (
     <button className={className} {...btnProps}>
       {loading ? (
-        <span
-          className={css.loadingSpinner}
-          role="status"
-          aria-hidden="true"
-        />
-      ) : renderIcon(icStart, 'start')}
+        <span className={css.loadingSpinner} role="status" aria-hidden="true" />
+      ) : (
+        renderIcon(icStart, 'start')
+      )}
       {typeof children === 'string' ? <span>{children}</span> : children}
       {renderIcon(icEnd, 'end')}
     </button>

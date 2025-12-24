@@ -1,6 +1,6 @@
-import { variants, type IVariants } from './cva';
 import cn from 'classnames';
-import { type ComponentProps, type ReactNode, useRef, useEffect, useId } from 'react';
+import { useEffect, useId, useRef, type ComponentProps, type ReactNode } from 'react';
+import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
 interface Props extends Omit<ComponentProps<'input'>, 'size'> {
@@ -25,13 +25,13 @@ export function Checkbox({
   const checkboxId = id || generatedId;
   const isChecked = restProps.checked ?? restProps.defaultChecked;
   const isDisabled = restProps.disabled;
-  
+
   useEffect(() => {
     if (checkboxRef.current && indeterminate !== undefined) {
       checkboxRef.current.indeterminate = indeterminate;
     }
   }, [indeterminate]);
-  
+
   const checkboxClassName = cn(
     css.checkbox,
     variants({
@@ -43,11 +43,8 @@ export function Checkbox({
       [css.disabled]: isDisabled,
     },
   );
-  
-  const wrapperClassName = cn(
-    css.root,
-    extClassName,
-  );
+
+  const wrapperClassName = cn(css.root, extClassName);
 
   return (
     <div className={wrapperClassName}>
@@ -70,4 +67,3 @@ export function Checkbox({
 }
 
 Checkbox.displayName = 'Checkbox';
-

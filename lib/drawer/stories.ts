@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { sizeOptions } from './cva';
 import { Drawer } from './component';
+import { sizeOptions } from './cva';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Drawer> = {
@@ -28,4 +28,3 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {},
 };
-
