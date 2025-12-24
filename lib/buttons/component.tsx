@@ -6,6 +6,7 @@ import css from './styles.module.scss';
 interface Props extends ComponentProps<'button'> {
   icStart?: ReactNode;
   icEnd?: ReactNode;
+  iconOnly?: boolean;
 }
 
 type TExternalVariants = Omit<IVariants, keyof Props | 'hasIconStart' | 'hasIconEnd'>;
@@ -37,6 +38,7 @@ export function Button({
       loading: loading,
       hasIconStart: hasIconStart,
       hasIconEnd: hasIconEnd,
+      iconOnly: hasIconStart && !hasIconEnd && !children,
     }),
     extClassName,
   );
@@ -46,12 +48,6 @@ export function Button({
     
     const iconClassName = position === 'start' ? css.iconStart : css.iconEnd;
     
-    if (typeof icon === 'string') {
-      // Support for Bootstrap icons or other icon class strings
-      return <i className={`bi ${icon} ${iconClassName}`} aria-hidden="true" />;
-    }
-    
-    // Support for React components or JSX
     return <span className={iconClassName}>{icon}</span>;
   };
   

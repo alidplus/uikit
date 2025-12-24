@@ -16,16 +16,73 @@ const meta: Meta<typeof Switch> = {
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     size: { control: 'select', options: sizeOptions },
+    label: { control: 'text' },
+    text: { control: 'text' },
+    checked: { control: 'boolean' },
+    disabled: { control: 'boolean' },
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
-  args: {},
+  args: {
+    label: 'Label',
+    text: 'Text',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Default: Story = {
   args: {},
+};
+
+export const Checked: Story = {
+  args: {
+    checked: true,
+  },
+};
+
+export const WithLabelOnly: Story = {
+  args: {
+    text: undefined,
+  },
+};
+
+export const WithTextOnly: Story = {
+  args: {
+    label: undefined,
+  },
+};
+
+export const WithoutLabelAndText: Story = {
+  args: {
+    label: undefined,
+    text: undefined,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};
+
+export const DisabledChecked: Story = {
+  args: {
+    disabled: true,
+    checked: true,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: 'sm',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+  },
 };
 

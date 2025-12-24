@@ -6,7 +6,7 @@ const sizesConfig = {
   lg: css.large,
 } as const;
 
-export const variants = cva(css.root, {
+export const variants = cva('', {
   variants: {
     size: sizesConfig,
   },
