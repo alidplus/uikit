@@ -2,7 +2,7 @@ import { variants, type IVariants } from './cva';
 import cn from 'classnames';
 import { type ComponentProps, type ReactNode, useRef, useEffect, useId } from 'react';
 import css from './styles.module.scss';
-import { Unread } from '../icons/component';
+import { Unread } from '../icons';
 
 interface Props extends Omit<ComponentProps<'input'>, 'size'> {
   label?: ReactNode;

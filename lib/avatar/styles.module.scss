@@ -1,5 +1,15 @@
 .root {
-  &.small {}
-  &.large {}
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  overflow: clip;
+  width: 64px;
+  height: auto;
+
+  &.small {
+    width: 32px;
+  }
+  &.large {
+    width: 128px;
+  }
 }
 

@@ -16,3 +16,16 @@ export const variants = cva(css.root, {
 export type IVariants = VariantProps<typeof variants>;
 
 export const sizeOptions = Object.keys(sizesConfig);
+
+export const itemVariants = cva(css.item, {
+  variants: {
+    active: {
+      true: css.active,
+    },
+    disabled: {
+      true: css.disabled,
+    },
+  },
+});
+
+export type IItemVariants = VariantProps<typeof itemVariants>;
