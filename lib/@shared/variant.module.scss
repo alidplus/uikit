@@ -1,0 +1,10 @@
+.root {
+  --text-color: black;
+  --bg-color: transparent;
+  --border-color: gray;
+  --shadow-color: #00000030;
+
+  &.primary {
+    --color-primary: #007bff;
+  }
+}

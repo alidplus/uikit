@@ -1,5 +1,5 @@
 export * from './buttons/component';
-export * from './icons/component';
+// export * from './icons/component';
 export * from './spinner/component';
 // export * from './empty/component'
 export * from './alert/component';
@@ -13,7 +13,9 @@ export * from './dropdown/component';
 export * from './input/component';
 export * from './modal/component';
 export * from './pagination/component';
+export * from './paper/component';
 export * from './popover/component';
+export * from './pressible/component';
 export * from './radio/component';
 export * from './select/component';
 export * from './switch/component';

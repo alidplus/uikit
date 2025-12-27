@@ -59,23 +59,6 @@
   transition: color 0.2s ease;
 }
 
-.content {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  position: relative;
-}
-
-.title {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: 0;
-  color: #e5e5e5;
-  transition: color 0.2s ease;
-}
-
 .icon {
   position: absolute;
   width: 20px;

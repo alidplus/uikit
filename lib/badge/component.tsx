@@ -1,27 +1,36 @@
 import cn from 'classnames';
-import { type ComponentProps, type PropsWithChildren } from 'react';
+import { type ComponentProps, type ComponentType, type PropsWithChildren } from 'react';
+import { sharedVariants, type ISharedVariants } from '../@shared/cva';
 import { variants, type IVariants } from './cva';
 
-interface Props extends ComponentProps<'span'> {}
+interface Props {
+  icon?: ComponentType;
+}
 
-type TExternalVariants = Omit<IVariants, keyof Props>;
-
-export type BadgeProps = TExternalVariants & Props;
+export type BadgeProps = Omit<ISharedVariants, keyof Props> &
+  Omit<IVariants, keyof Props> &
+  Omit<ComponentProps<'span'>, keyof Props> &
+  Props;
 
 export function Badge({
   size,
   className: extClassName,
   children,
+  icon: Icon,
+  level,
+  pad,
+  border,
+  rounded,
   ...restProps
 }: PropsWithChildren<BadgeProps>) {
   const className = cn(
-    variants({
-      size: size,
-      class: extClassName,
-    }),
+    sharedVariants({ level, border, rounded, pad }),
+    variants({ size }),
+    extClassName,
   );
   return (
     <span className={className} {...restProps}>
+      {Icon && <Icon />}
       {children}
     </span>
   );
