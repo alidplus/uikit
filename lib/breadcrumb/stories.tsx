@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Home2 } from '../icons';
 import { Breadcrumb, type IBreadcrumbItem } from './component';
 import { sizeOptions } from './cva';
 
 const sampleItems: IBreadcrumbItem[] = [
-  { label: 'Home', href: '/', icon: <Home2 /> },
   { label: 'Products', href: '/products' },
   { label: 'Electronics', href: '/products/electronics', isActive: true },
 ];
@@ -50,13 +48,8 @@ export const Primary: Story = {
 };
 
 // Example with default anchor tag (no linkComponent prop)
-export const WithDisabledItem: Story = {
+export const WithTitle: Story = {
   args: {
-    items: [
-      sampleItems[0],
-      { label: 'Disabled', href: '/disabled', isDisabled: true },
-      sampleItems[1],
-      sampleItems[2],
-    ],
+    title: 'Breadcrumb Title',
   },
 };

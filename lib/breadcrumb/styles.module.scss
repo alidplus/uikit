@@ -1,8 +1,10 @@
+@use '../semantic' as *;
+
 .root {
   display: flex;
   align-items: center;
   gap: 8px;
-
+  
   &.small {}
   &.large {}
 }
@@ -10,12 +12,34 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: var(--color-text-text-tertiary, #A3A3A3);
+  text-decoration: none;
 
   &.active{
     font-weight: 900;
+    color: var(--interaction-brand-bg-brand-default);
   }
   &.disabled{
     opacity: 0.6;
   }
 }
 
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px 8px 0;
+  border-right: 1px solid var(--color-border-border-default, #424242);
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  
+  .titleText {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0;
+    color: var(--color-text-text-primary, #000000);
+    white-space: nowrap;
+  }
+}

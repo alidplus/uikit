@@ -6,9 +6,24 @@ const sizesConfig = {
   lg: css.large,
 } as const;
 
+const severityConfig = {
+  info: css.info,
+  success: css.success,
+  warning: css.warning,
+  error: css.error,
+} as const;
+
+const variantConfig = {
+  filled: css.filled,
+  outlined: css.outlined,
+  text: css.text,
+} as const;
+
 export const variants = cva(css.root, {
   variants: {
     size: sizesConfig,
+    severity: severityConfig,
+    variant: variantConfig,
   },
   defaultVariants: {},
 });

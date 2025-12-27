@@ -1,4 +1,7 @@
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react-vite';
+import '../lib/variables.scss';
+import './styles.css';
 
 const preview: Preview = {
   parameters: {
@@ -16,6 +19,17 @@ const preview: Preview = {
       test: 'todo',
     },
   },
-};
+} satisfies Preview['parameters'];
+
+export const decorators = [
+  withThemeByDataAttribute({
+    themes: {
+      light: 'light',
+      dark: 'dark',
+    },
+    defaultTheme: 'light',
+    attributeName: 'data-theme',
+  }),
+];
 
 export default preview;

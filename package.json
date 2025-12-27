@@ -22,7 +22,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix",
     "dev": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "gen:tokens": "node scripts/generate-tokens.js"
   },
   "dependencies": {
     "@solar-icons/react": "^1.0.1",
@@ -46,6 +47,7 @@
     "@eslint/js": "^9.39.1",
     "@storybook/addon-a11y": "^10.1.10",
     "@storybook/addon-docs": "^10.1.10",
+    "@storybook/addon-themes": "^10.1.10",
     "@storybook/addon-vitest": "^10.1.10",
     "@storybook/react-vite": "^10.1.10",
     "@types/node": "^24.10.1",
@@ -68,6 +70,11 @@
     "react-dom": "^19.2.0",
     "sass-embedded": "^1.97.1",
     "storybook": "^10.1.10",
+    "storybook-addon-themes": "^6.1.0",
+    "storybook-dark-mode": "^4.0.2",
+    "stylelint": "^16.26.1",
+    "stylelint-prettier": "^5.0.3",
+    "stylelint-scss": "^6.13.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "npm:rolldown-vite@7.2.5",

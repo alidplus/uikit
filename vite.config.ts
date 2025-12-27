@@ -22,6 +22,11 @@ export default defineConfig({
       outDir: 'dist',
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {},
+    },
+  },
   test: {
     projects: [
       {

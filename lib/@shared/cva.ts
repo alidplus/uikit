@@ -1,9 +1,16 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import border from './border.module.scss';
+import flex from './flex.module.scss';
 import padding from './padding.module.scss';
 import radius from './radius.module.scss';
 import shadow from './shadow.module.scss';
 import variant from './variant.module.scss';
+
+const flexConfig = {
+  vertical: flex.vertical,
+  horizontal: flex.horizontal,
+  center: flex.center,
+} as const;
 
 const shadowsConfig = {
   none: shadow.none,
@@ -25,12 +32,15 @@ const bordersConfig = {
 
 const roundedConfig = {
   none: radius.none,
+  xxs: radius.xxs,
   xs: radius.xs,
   sm: radius.sm,
   md: radius.md,
   lg: radius.lg,
   xl: radius.xl,
-  full: radius.full,
+  xxl: radius.xxl,
+  xxxl: radius.xxxl,
+  rounded: radius.rounded,
 } as const;
 
 const paddingConfig = {
@@ -53,6 +63,7 @@ export const sharedVariants = cva('', {
     level: shadowsConfig,
     border: bordersConfig,
     rounded: roundedConfig,
+    flex: flexConfig,
   },
 });
 
@@ -64,4 +75,5 @@ export const sharedArgTypes = {
   border: { control: 'select', options: Object.keys(bordersConfig) },
   rounded: { control: 'select', options: Object.keys(roundedConfig) },
   variant: { control: 'select', options: Object.keys(variantsConfig) },
+  flex: { control: 'select', options: Object.keys(flexConfig) },
 } as const;
