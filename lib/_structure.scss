@@ -1,0 +1,55 @@
+@use './_primitives' as *;
+/* Structure - Mobile */
+:root {
+  --grid-dashboard-grid-columns: 4px;
+  --grid-dashboard-grid-gutter: var(--layout-layout-xs);
+  --grid-dashboard-grid-margin: var(--layout-layout-xs);
+  --grid-dashboard-sidebar-width: 0px;
+  --grid-dashboard-page-width: var(--device-width-mobile);
+  --grid-dashboard-breakpoint: 568px;
+}
+
+@media only screen and (max-width: 568px) {
+  /* Structure - Tablet */
+  :root {
+    --grid-dashboard-grid-columns: 8px;
+    --grid-dashboard-grid-gutter: var(--layout-layout-s);
+    --grid-dashboard-grid-margin: var(--layout-layout-m);
+    --grid-dashboard-sidebar-width: 64px;
+    --grid-dashboard-page-width: var(--device-width-tablet);
+    --grid-dashboard-breakpoint: 1024px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  /* Structure - Desktop(1440) */
+  :root {
+    --grid-dashboard-grid-columns: 12px;
+    --grid-dashboard-grid-gutter: var(--layout-layout-m);
+    --grid-dashboard-grid-margin: var(--layout-layout-lg);
+    --grid-dashboard-sidebar-width: 260px;
+    --grid-dashboard-page-width: var(--device-width-desktop-m);
+    --grid-dashboard-breakpoint: 1440px;
+  }
+}
+@media only screen and (min-width: 1440px) {
+  /* Structure - Desktop(1920) */
+  :root {
+    --grid-dashboard-grid-columns: 12px;
+    --grid-dashboard-grid-gutter: var(--layout-layout-m);
+    --grid-dashboard-grid-margin: var(--layout-layout-lg);
+    --grid-dashboard-sidebar-width: 260px;
+    --grid-dashboard-page-width: var(--device-width-desktop-lg);
+    --grid-dashboard-breakpoint: 1920px;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  /* Structure - 4K / XL */
+  :root {
+    --grid-dashboard-grid-columns: 12px;
+    --grid-dashboard-grid-gutter: var(--layout-layout-lg);
+    --grid-dashboard-grid-margin: var(--layout-layout-2xl);
+    --grid-dashboard-sidebar-width: 320px;
+    --grid-dashboard-page-width: var(--device-width-4k);
+    --grid-dashboard-breakpoint: 1920px;
+  }
+}

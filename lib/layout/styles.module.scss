@@ -1,0 +1,72 @@
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-areas: "header" "article" "footer";
+  @media only screen and (min-width: 568px) {
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    grid-template-areas: "aside header" "aside article" "aside footer";
+  }
+  gap: var(--gap-y) var(--gap-x);
+  
+  &>header {
+    grid-area: header;
+  }
+  &>aside {
+    z-index: 1;
+    grid-area: aside;
+    width: 64px;
+    
+    @media only screen and (max-width: 568px) {
+      overflow-x: clip;
+      overflow-y: auto;
+      height: 100vh;
+      position: fixed;
+      width: 260px;
+      max-width: 90vw;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    @media only screen and (min-width: 1024px) {
+      width: 260px;
+      overflow-x: clip;
+      overflow-y: auto;
+    }
+    // @media only screen and (min-width: 1440px) {
+    // }
+    @media only screen and (min-width: 1920px) {
+      width: 300px;
+    }
+  }
+  &>article {
+    grid-area: article;
+    overflow-x: clip;
+    overflow-y: auto;
+  }
+  &>footer {
+    grid-area: footer;
+  }
+  :global {
+
+    @media only screen and (max-width: 568px) {
+      aside.open {
+        transform: translateX(0)!important;
+      }
+    }
+
+    @media only screen and (min-width: 568px) and (max-width: 1024px) {
+      aside>div {
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+      aside.open>div {
+        width: 260px;
+      }
+    }
+  }
+}
+

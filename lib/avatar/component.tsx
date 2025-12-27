@@ -18,7 +18,7 @@ export function Avatar({
   level,
   border,
   pad = 'none',
-  rounded = 'full',
+  rounded = 'rounded',
   ...restProps
 }: AvatarProps) {
   const className = cn(

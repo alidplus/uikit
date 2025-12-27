@@ -1,3 +1,4 @@
+import './variables.scss';
 export * from './buttons/component';
 // export * from './icons/component';
 export * from './spinner/component';

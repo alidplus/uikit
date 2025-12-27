@@ -1,17 +1,19 @@
-import { AltArrowRight } from '@solar-icons/react';
 import cn from 'classnames';
 import { type ComponentProps, type ComponentType } from 'react';
 import { sharedVariants, type ISharedVariants } from '../@shared/cva';
+import { AltArrowRight, Home, SolarProvider } from '../icons';
 import { Pressible } from '../main';
 import { itemVariants, variants, type IVariants } from './cva';
+import css from './styles.module.scss';
 
 export interface IBreadcrumbItem {
-  label: string;
+  label?: string;
   href: string;
   icon?: React.ReactNode;
   onClick?: () => void;
   isActive?: boolean;
   isDisabled?: boolean;
+  title?: string;
 }
 
 // Default link component - a simple anchor tag
@@ -42,6 +44,7 @@ export function Breadcrumb({
   border,
   rounded,
   items,
+  title,
   linkComponent: LinkComponent = DefaultLink,
   ...restProps
 }: BreadcrumbProps) {
@@ -58,9 +61,17 @@ export function Breadcrumb({
   );
   return (
     <nav className={className} {...restProps}>
-      {items.map((item, idx) => (
+      {title && (
+        <div className={css.titleContainer}>
+          <p className={css.titleText}>{title}</p>
+        </div>
+      )}
+      <Pressible href="/" as={LinkComponent} className={itemVariants({})}>
+        <Home color="var(--interaction-neutral-bg-neutral-default, #292929)" size={20} />
+      </Pressible>
+      {items.map((item) => (
         <>
-          {idx > 0 && <AltArrowRight />}
+          <AltArrowRight color="var(--color-text-text-placeholder, #737373)" size={20} />
           <Pressible
             key={item.label}
             href={item.href}
@@ -70,7 +81,11 @@ export function Breadcrumb({
               disabled: item.isDisabled,
             })}
           >
-            {item.icon}
+            {item.icon ? (
+              <SolarProvider value={{ size: 20, color: 'var(--color-text-text-tertiary)' }}>
+                {item.icon}
+              </SolarProvider>
+            ) : null}
             {item.label}
           </Pressible>
         </>
