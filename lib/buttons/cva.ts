@@ -41,7 +41,7 @@ export const variants = cva(css.btn, {
     },
     iconOnly: {
       true: css.iconOnly,
-    }
+    },
   },
   defaultVariants: {
     variant: 'primary',
