@@ -1,33 +1,31 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import css from './styles.module.scss';
 
-const sizesConfig = {
-  sm: css.small,
-  lg: css.large,
-} as const;
-
 const severityConfig = {
+  alert: css.alert,
+  error: css.alert,
   info: css.info,
-  success: css.success,
-  warning: css.warning,
-  error: css.error,
+  warn: css.warn,
 } as const;
 
 const variantConfig = {
-  filled: css.filled,
-  outlined: css.outlined,
-  text: css.text,
+  block: css.block,
+  inline: css.inline,
+  banner: css.banner,
 } as const;
 
 export const variants = cva(css.root, {
   variants: {
-    size: sizesConfig,
     severity: severityConfig,
     variant: variantConfig,
+    banner: {
+      true: css.banner,
+    },
   },
   defaultVariants: {},
 });
 
 export type IVariants = VariantProps<typeof variants>;
 
-export const sizeOptions = Object.keys(sizesConfig);
+export const severityOptions = Object.keys(severityConfig);
+export const variantOptions = Object.keys(variantConfig);

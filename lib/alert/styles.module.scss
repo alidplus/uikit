@@ -1,105 +1,107 @@
 .root {
   display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 8px 16px;
   align-items: flex-start;
-  gap: 12px;
-  position: relative;
+  gap: 16px;
+  border-radius: 6px;
 
-  &.small {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
-
-  &.large {
-    padding: 16px 20px;
-    font-size: 16px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  
+  &.alert {
+    background: var(--color-surface-surface-subtle-surface-error, rgba(241, 77, 65, 0.10));
+    color: var(--color-text-text-error, #F14D41);
+    .cta {
+      color: var(--color-text-text-error, #F14D41);
+    }
   }
 
   &.info {
-    // Info variant styles - to be implemented
+    background: var(--color-surface-alpha-surface-success, rgba(1, 188, 141, 0.10));
+    color: var(--color-text-text-success, #33C7A2);
+    .cta {
+      color: var(--color-text-text-success, #33C7A2);
+    }
   }
 
-  &.success {
-    // Success variant styles - to be implemented
+  &.warn {
+    background: var(--color-surface-alpha-surface-warning, rgba(250, 197, 21, 0.10));
+    color: var(--color-text-text-warning, #FAC515);
+    .cta {
+      color: var(--color-text-text-warning, #FAC515);
+    }
   }
 
-  &.warning {
-    // Warning variant styles - to be implemented
-  }
-
-  &.error {
-    // Error variant styles - to be implemented
-  }
-
-  &.filled {
-    // Filled variant styles - to be implemented
-  }
-
-  &.outlined {
-    // Outlined variant styles - to be implemented
-  }
-
-  &.text {
-    // Text variant styles - to be implemented
+  &.banner {
+    justify-content: center;
+    >.content {
+      flex: unset;
+      width: fit-content;
+      color: var(--color-text-text-primary, #141414);
+    }
+    .icon, .close {
+      display: none;
+    }
+  
   }
 
   &.inline {
     display: inline-flex;
+    width: fit-content;
+  }
+
+  .icon {
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .cta {
+    margin-inline-start: 4px;
+  }
+  
+  .content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .description {
+    font-weight: 400;
+    opacity: 0.9;
+  }
+  
+  .close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transform: translateX(6px);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    padding: 0;
+  
+    &:hover {
+      opacity: 1;
+    }
+  
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
   }
 }
 
-.icon {
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.content {
-  flex: 1;
-  min-width: 0;
-}
-
-.title {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.description {
-  font-weight: 400;
-  opacity: 0.9;
-}
-
-.children {
-  // Children content styles - to be implemented
-}
-
-.action {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  margin: -4px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  &:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
-    border-radius: 4px;
-  }
-}
 

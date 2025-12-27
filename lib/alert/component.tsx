@@ -1,65 +1,59 @@
-import {
-  CheckCircle,
-  CloseCircle,
-  DangerTriangle,
-  InfoCircle,
-  SolarProvider,
-} from '@solar-icons/react';
+'use client';
 import cn from 'classnames';
-import { type ComponentProps, type PropsWithChildren } from 'react';
+import { type ComponentProps } from 'react';
 import { sharedVariants, type ISharedVariants } from '../@shared/cva';
+import { CheckCircle, CloseCircle, DangerCircle, DangerTriangle, SolarProvider } from '../icons';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
 interface Props {
-  inline?: boolean;
-  closable?: boolean;
   onClose?: () => void;
   icon?: React.ReactNode;
-  action?: React.ReactNode;
-  title?: string;
-  description?: string;
+  message?: string;
+  important?: true | string;
+  cta?: string;
+  ctaHref?: string;
+  ctaTarget?: ComponentProps<'a'>['target'];
 }
 
 const defaultIcons: Record<NonNullable<Required<IVariants>['severity']>, React.ReactNode> = {
-  info: <InfoCircle />,
-  success: <CheckCircle />,
-  warning: <DangerTriangle />,
-  error: <CloseCircle />,
+  info: <CheckCircle />,
+  warn: <DangerTriangle />,
+  error: <DangerCircle />,
+  alert: <DangerCircle />,
 };
 
-export type AlertProps = Omit<ISharedVariants, keyof Props> &
+export type AlertProps = Omit<ISharedVariants, keyof Props | 'variant'> &
   Omit<IVariants, keyof Props> &
   Omit<ComponentProps<'div'>, keyof Props> &
   Props;
 
 export function Alert({
-  size,
   severity,
   variant,
   className: extClassName,
-  children,
   level,
   border,
   rounded,
   pad,
-  inline,
-  closable,
   onClose,
   icon,
-  action,
-  title,
-  description,
+  message,
+  banner,
+  important,
+  cta,
+  ctaHref,
+  ctaTarget,
   ...restProps
-}: PropsWithChildren<AlertProps>) {
+}: AlertProps) {
   const className = cn(
-    sharedVariants({ level, border, rounded, pad, variant }),
+    sharedVariants({ level, border, rounded, pad }),
     variants({
-      size: size,
-      severity: severity,
+      severity,
+      variant,
+      banner,
       class: extClassName,
     }),
-    inline && css.inline,
   );
 
   // Determine which icon to show
@@ -72,18 +66,23 @@ export function Alert({
     <div className={className} role="alert" {...restProps}>
       {showIcon && (
         <div className={css.icon}>
-          <SolarProvider value={{ size: 35 }}>{displayIcon}</SolarProvider>
+          <SolarProvider value={{ size: 20 }}>{displayIcon}</SolarProvider>
         </div>
       )}
-      <div className={css.content}>
-        {title && <div className={css.title}>{title}</div>}
-        {description && <div className={css.description}>{description}</div>}
-        {children && !title && !description && <div className={css.children}>{children}</div>}
-      </div>
-      {action && <div className={css.action}>{action}</div>}
-      {closable && (
+      <p className={css.content}>
+        {important && (
+          <strong className={css.title}>{important === true ? 'Important' : important}: </strong>
+        )}
+        {message && <span className={css.description}>{message}</span>}
+        {cta ? (
+          <a className={css.cta} href={ctaHref} target={ctaTarget}>
+            {cta}
+          </a>
+        ) : null}
+      </p>
+      {onClose && (
         <button type="button" className={css.close} onClick={onClose} aria-label="Close alert">
-          ×
+          <CloseCircle weight="BoldDuotone" color="currentColor" size={16} />
         </button>
       )}
     </div>
