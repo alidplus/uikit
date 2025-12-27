@@ -1,5 +1,277 @@
 .root {
-  &.small {}
-  &.large {}
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  position: relative;
 }
 
+.label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #d6d6d6;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.labelDisabled {
+  color: #737373;
+}
+
+.required {
+  color: #d6d6d6;
+  font-size: 16px;
+  line-height: 24px;
+  
+  .labelDisabled & {
+    color: #737373;
+  }
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 48px;
+  padding: 12px 12px 12px 16px;
+  background-color: #292929;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+  text-align: left;
+  
+  &:hover:not(.disabled) {
+    background-color: #1f1f1f;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+  
+  &.open {
+    border-radius: 8px 8px 0 0;
+  }
+  
+  &.disabled {
+    background-color: #292929;
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.iconStart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.value {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.valueText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #d6d6d6;
+  white-space: nowrap;
+}
+
+.placeholderText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: #737373;
+  white-space: pre-wrap;
+}
+
+.placeholder {
+  .valueText {
+    color: #737373;
+  }
+}
+
+.hasValue {
+  .value {
+    gap: 0;
+  }
+}
+
+.iconEnd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #a3a3a3;
+}
+
+.arrowIcon {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: rotate(0deg);
+}
+
+.arrowUp {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #292929;
+  border-radius: 0 0 8px 8px;
+  padding: 4px 0;
+  z-index: 1000;
+  max-height: 240px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1), 0px 2px 4px -1px rgba(0, 0, 0, 0.06);
+  animation: slideDown 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Hide scrollbar for all browsers
+  scrollbar-width: thin;
+  scrollbar-color: #424242 transparent;
+  
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: #424242;
+    border-radius: 9999px;
+    padding: 2px 4px;
+  }
+}
+
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 36px;
+  padding: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #a3a3a3;
+  text-align: left;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: -2px;
+  }
+}
+
+.menuItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.menuItemLabel {
+  color: inherit;
+  white-space: nowrap;
+}
+
+.menuItemSelected {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 2px;
+}
+
+.hintIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #a3a3a3;
+}
+
+.hintText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #a3a3a3;
+}
+
+.hintDisabled {
+  color: #737373;
+  
+  & ~ .hintIcon,
+  .hintIcon {
+    color: #737373;
+  }
+}
+
+// Fix hint icon color when disabled
+.hint:has(.hintDisabled) .hintIcon {
+  color: #737373;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

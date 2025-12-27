@@ -6,11 +6,19 @@ const sizesConfig = {
   lg: css.large,
 } as const;
 
-export const variants = cva(css.root, {
+export const variants = cva(css.textarea, {
   variants: {
     size: sizesConfig,
+    error: {
+      true: css.error,
+    },
+    disabled: {
+      true: css.disabled,
+    },
   },
-  defaultVariants: {},
+  defaultVariants: {
+    size: 'lg',
+  },
 });
 
 export type IVariants = VariantProps<typeof variants>;

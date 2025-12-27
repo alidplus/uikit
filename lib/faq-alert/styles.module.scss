@@ -1,0 +1,157 @@
+.root {
+  position: relative;
+  background-color: #222;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 80%;
+}
+
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #a3a3a3;
+  transition: color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+  
+  &:hover {
+    color: #d6d6d6;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #d6d6d6;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.description {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #a3a3a3;
+  padding-top: 0;
+  padding-bottom: 8px;
+  
+  p {
+    margin: 0;
+    
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.primaryButton {
+  background-color: #b5ff00;
+  color: #212529;
+  border: none;
+  border-radius: 999px;
+  padding: 0 16px;
+  height: 40px;
+  min-width: 144px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background-color: #c5ff20;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+    background-color: #a5ef00;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+}
+
+.secondaryButton {
+  background-color: #292929;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0 16px;
+  height: 40px;
+  min-width: 144px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background-color: #333;
+  }
+  
+  &:active {
+    transform: scale(0.98);
+    background-color: #1f1f1f;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+}
+
