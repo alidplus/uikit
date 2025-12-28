@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren } from 'react';
 import { variants, type IVariants } from './cva';
 
-interface Props extends Omit<ComponentProps<'select'>, 'size'> {}
+type Props = ComponentProps<'div'>;
 
 type TExternalVariants = Omit<IVariants, keyof Props>;
 
@@ -21,9 +21,9 @@ export function Select({
     }),
   );
   return (
-    <select className={className} {...restProps}>
+    <div className={className} {...restProps}>
       {children}
-    </select>
+    </div>
   );
 }
 
