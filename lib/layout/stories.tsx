@@ -29,7 +29,6 @@ const meta: Meta<typeof DashboardLayout> = {
         </Paper>
         <Paper asChild flex="vertical">
           <Drawer
-            logo={sampleLogo}
             menuItems={sampleMenuItems}
             showSearchOnMobile={true}
             searchPlaceholder={'Search here...'}

@@ -1,4 +1,49 @@
 .root {
-  &.small {}
-  &.large {}
+  container-type: inline-size;
+  width: 100%;
+  
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .avatar, .logout {
+    flex-shrink: 0;
+    height: 48px;
+    width: 48px;
+  }
+  .logout {
+    margin-inline-start: auto;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #A3A3A3;
+    >span {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  @container (max-width: 150px) {
+    .content {
+      display: none;
+    }
+  }
+
+  @container (max-width: 100px) {
+    .wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+  }
 }

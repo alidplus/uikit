@@ -33,3 +33,11 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {},
 };
+
+// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const Error: Story = {
+  args: {
+    src: '/404.jpg',
+    name: 'John Doe',
+  },
+};

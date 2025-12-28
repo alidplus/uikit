@@ -1,18 +1,20 @@
 import { SolarProvider } from '@solar-icons/react';
 import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren, type ReactNode } from 'react';
+import { sharedVariants, type ISharedVariants } from '../@shared/cva';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
-interface Props extends ComponentProps<'button'> {
+interface Props {
   icStart?: ReactNode;
   icEnd?: ReactNode;
   iconOnly?: boolean;
 }
 
-type TExternalVariants = Omit<IVariants, keyof Props | 'hasIconStart' | 'hasIconEnd'>;
-
-export type ButtonProps = TExternalVariants & Props;
+export type ButtonProps = Omit<ComponentProps<'button'>, keyof Props> &
+  Omit<ISharedVariants, keyof Props | 'variant'> &
+  Omit<IVariants, keyof Props | 'hasIconStart' | 'hasIconEnd'> &
+  Props;
 
 export function Button({
   children,
@@ -25,12 +27,24 @@ export function Button({
   icStart,
   icEnd,
   iconOnly,
+  rounded,
+  pad,
+  level,
+  border,
+  flex,
   ...btnProps
 }: PropsWithChildren<ButtonProps>) {
   const hasIconStart = !!icStart && !iconOnly;
   const hasIconEnd = !!icEnd;
 
   const className = cn(
+    sharedVariants({
+      rounded,
+      pad,
+      level,
+      border,
+      flex,
+    }),
     variants({
       variant: variant,
       disabled: btnProps.disabled,

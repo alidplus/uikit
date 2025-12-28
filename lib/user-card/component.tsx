@@ -1,29 +1,40 @@
 import cn from 'classnames';
-import { type ComponentProps, type PropsWithChildren } from 'react';
-import { variants, type IVariants } from './cva';
+import { type ComponentProps } from 'react';
+import type { ISharedVariants } from '../@shared/cva';
+import { Avatar, type AvatarProps } from '../avatar/component';
+import { Logout3 } from '../icons';
+import { Button } from '../main';
+import css from './styles.module.scss';
 
-interface Props extends ComponentProps<'span'> {}
+interface Props {
+  avatarSrc?: string;
+  name?: string;
+  email?: string;
+  size?: AvatarProps['size'];
+}
 
-type TExternalVariants = Omit<IVariants, keyof Props>;
+export type UserCardProps = Omit<ISharedVariants, keyof Props> &
+  Omit<ComponentProps<'div'>, keyof Props> &
+  Props;
 
-export type UserCardProps = TExternalVariants & Props;
-
-export function UserCard({
-  size,
-  className: extClassName,
-  children,
-  ...restProps
-}: PropsWithChildren<UserCardProps>) {
-  const className = cn(
-    variants({
-      size: size,
-      class: extClassName,
-    }),
-  );
+export function UserCard({ className, avatarSrc, name, email, size, ...restProps }: UserCardProps) {
   return (
-    <span className={className} {...restProps}>
-      {children}
-    </span>
+    <div className={cn(css.root, className)} {...restProps}>
+      <div className={css.wrapper}>
+        <Avatar className={css.avatar} src={avatarSrc} size={size} name={name ?? email} />
+        <div className={css.content}>
+          {name && <span>{name}</span>}
+          {email && <span title={email}>{email}</span>}
+        </div>
+        <Button
+          variant="secondary"
+          rounded="rounded"
+          className={css.logout}
+          size="sm"
+          icStart={<Logout3 size={16} />}
+        />
+      </div>
+    </div>
   );
 }
 

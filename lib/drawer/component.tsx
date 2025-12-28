@@ -1,3 +1,4 @@
+import { SolarProvider } from '@solar-icons/react';
 import cn from 'classnames';
 import {
   useCallback,
@@ -160,7 +161,7 @@ export function Drawer({
                       onClick={() => handleItemClick(item)}
                       title={!expand ? item.label : undefined}
                     >
-                      {item.icon && <span className={css.icon}>{item.icon}</span>}
+                      {item.icon && <SolarProvider value={{ size: 24 }}>{item.icon}</SolarProvider>}
                       {expand && <span className={css.label}>{item.label}</span>}
                     </button>
                   );
