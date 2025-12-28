@@ -1,11 +1,12 @@
 import {
-  Card,
-  Chart,
-  Routing3,
+  BitcoinCard,
+  BuyCrypto,
+  CardCoin,
   SettingsMinimalistic,
   ShieldCheck,
   ShieldUser,
   Shop,
+  Trade,
   Widget2,
 } from '../icons';
 import { UserCard } from '../user-card/component';
@@ -17,7 +18,7 @@ export const sampleMenuItems: MenuItem[][] = [
     {
       id: '1',
       label: 'Dashboard',
-      icon: <Widget2 />,
+      icon: <Widget2 weight="BoldDuotone" />,
     },
     {
       id: '2',
@@ -27,24 +28,24 @@ export const sampleMenuItems: MenuItem[][] = [
     {
       id: '3',
       label: 'My Asset',
-      icon: <Card />,
+      icon: <BitcoinCard />,
     },
     {
       id: '4',
       label: 'Trade',
-      icon: <Routing3 />,
+      icon: <Trade />,
     },
   ],
   [
     {
       id: '5',
       label: 'Order History',
-      icon: <Chart />,
+      icon: <BuyCrypto />,
     },
     {
       id: '6',
       label: 'Funds History',
-      icon: <Chart />,
+      icon: <CardCoin />,
     },
   ],
   [

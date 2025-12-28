@@ -1,7 +1,16 @@
 import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks';
 import * as Stories from './stories';
+import { GalleryOf } from './gallery-of';
+import * as Icons from './';
 
 <Meta of={Stories} />
-
 <a href="https://solar-icons.vercel.app/icons" target="_blank">Open Icon Gallery</a>
-<iframe src="https://solar-icons.vercel.app/icons" width="100%" height="100%"></iframe>
+
+## Extra Icons
+
+<GalleryOf Icon={Icons.BitcoinCard} name="BitcoinCard" />
+<GalleryOf Icon={Icons.BuyCrypto} name="BuyCrypto" />
+<GalleryOf Icon={Icons.BitcoinConvert} name="BitcoinConvert" />
+<GalleryOf Icon={Icons.BitcoinRefresh} name="BitcoinRefresh" />
+<GalleryOf Icon={Icons.CardCoin} name="CardCoin" />
+<GalleryOf Icon={Icons.Trade} name="Trade" />
