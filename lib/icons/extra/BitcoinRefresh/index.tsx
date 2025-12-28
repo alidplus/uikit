@@ -297,4 +297,3 @@ export const BitcoinRefresh: Icon = forwardRef<SVGSVGElement, IconProps>((props,
 ));
 
 BitcoinRefresh.displayName = 'BitcoinRefresh';
-

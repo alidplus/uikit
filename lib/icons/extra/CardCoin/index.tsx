@@ -68,10 +68,7 @@ const pallet = new Map<IconWeight, ReactElement>([
         d="M23 6.5H14C14 8.98 16.02 11 18.5 11C20.99 11 23 8.98 23 6.5Z"
         fill="currentColor"
       />
-      <path
-        d="M23 6.5C23 4.01 20.99 2 18.5 2C16.02 2 14 4.01 14 6.5H23Z"
-        fill="currentColor"
-      />
+      <path d="M23 6.5C23 4.01 20.99 2 18.5 2C16.02 2 14 4.01 14 6.5H23Z" fill="currentColor" />
     </>,
   ],
   [
@@ -231,4 +228,3 @@ export const CardCoin: Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) 
 ));
 
 CardCoin.displayName = 'CardCoin';
-

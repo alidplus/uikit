@@ -314,4 +314,3 @@ export const BitcoinConvert: Icon = forwardRef<SVGSVGElement, IconProps>((props,
 ));
 
 BitcoinConvert.displayName = 'BitcoinConvert';
-
