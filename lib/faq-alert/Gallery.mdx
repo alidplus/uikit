@@ -1,0 +1,19 @@
+import { Story, Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './stories';
+
+<Meta of={Stories} />
+
+## Default
+
+<Canvas of={Stories.Default} />
+
+## Button Variants
+
+<Canvas of={Stories.PrimaryOnly} />
+<Canvas of={Stories.SecondaryOnly} />
+<Canvas of={Stories.NoButtons} />
+
+## Options
+
+<Canvas of={Stories.NoClose} />
+<Canvas of={Stories.CustomContent} />

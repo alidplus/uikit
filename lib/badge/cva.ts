@@ -1,18 +1,26 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import css from './styles.module.scss';
 
-const sizesConfig = {
-  sm: css.small,
-  lg: css.large,
+const variantConfig = {
+  default: css.default,
+  brand: css.brand,
+  completed: css.completed,
+  pending: css.pending,
+  failed: css.failed,
 } as const;
 
 export const variants = cva(css.root, {
   variants: {
-    size: sizesConfig,
+    variant: variantConfig,
+    outline: {
+      true: css.outline,
+    },
   },
-  defaultVariants: {},
+  defaultVariants: {
+    variant: 'default',
+  },
 });
 
 export type IVariants = VariantProps<typeof variants>;
 
-export const sizeOptions = Object.keys(sizesConfig);
+export const variantOptions = Object.keys(variantConfig);

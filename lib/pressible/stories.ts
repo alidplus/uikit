@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import React from 'react';
 
 import { sharedArgTypes } from '../@shared/cva';
 import { Pressible } from './component';
@@ -15,7 +16,10 @@ const meta: Meta<typeof Pressible> = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    ...sharedArgTypes,
+    pad: sharedArgTypes.pad,
+    level: sharedArgTypes.level,
+    border: sharedArgTypes.border,
+    rounded: sharedArgTypes.rounded,
   },
   args: { children: 'lorem ipsum', pad: 'md', level: 'md' },
 };
@@ -55,6 +59,26 @@ export const WithNextJsLink: Story = {
   args: {
     children: 'About (Next.js Link)',
   },
+  render: (args) => {
+    // Mock Next.js Link component for Storybook demonstration
+    const MockNextLink = ({
+      href,
+      children,
+      className,
+      ...props
+    }: {
+      href: string;
+      children: React.ReactNode;
+      className?: string;
+    } & React.ComponentProps<'a'>) => {
+      return React.createElement(
+        'a',
+        { href, className, ...props, 'data-link-type': 'nextjs' },
+        children,
+      );
+    };
+    return React.createElement(Pressible, { ...args, as: MockNextLink, href: '/about' });
+  },
 };
 
 // Example showing how to use with React Router Link
@@ -64,5 +88,25 @@ export const WithNextJsLink: Story = {
 export const WithReactRouterLink: Story = {
   args: {
     children: 'About (React Router Link)',
+  },
+  render: (args) => {
+    // Mock React Router Link component for Storybook demonstration
+    const MockRouterLink = ({
+      to,
+      children,
+      className,
+      ...props
+    }: {
+      to: string;
+      children: React.ReactNode;
+      className?: string;
+    } & React.ComponentProps<'a'>) => {
+      return React.createElement(
+        'a',
+        { href: to, className, ...props, 'data-link-type': 'react-router' },
+        children,
+      );
+    };
+    return React.createElement(Pressible, { ...args, as: MockRouterLink, to: '/about' });
   },
 };
