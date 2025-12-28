@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Paper } from '../main';
+import classNames from 'classnames';
+import { useState } from 'react';
+import { sampleLogo, sampleMenuItems, sampleUserProfile } from '../drawer/sample';
+import { Drawer, Paper } from '../main';
 import { DashboardLayout } from './component';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -25,9 +28,14 @@ const meta: Meta<typeof DashboardLayout> = {
           <header>header</header>
         </Paper>
         <Paper asChild flex="vertical">
-          <aside>
-            <div>Sidebar content</div>
-          </aside>
+          <Drawer
+            logo={sampleLogo}
+            menuItems={sampleMenuItems}
+            showSearchOnMobile={true}
+            searchPlaceholder={'Search here...'}
+          >
+            {sampleUserProfile}
+          </Drawer>
         </Paper>
         <Paper asChild border={1}>
           <article>
@@ -65,4 +73,35 @@ export const Minimal: Story = {
       </>
     ),
   },
+};
+
+export const WithToggle: Story = {
+  render: () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [open, setOpen] = useState(false);
+    return (
+      <DashboardLayout>
+        {sampleLogo}
+        <header style={{ background: 'gray' }}>
+          <button onClick={() => setOpen(!open)}>Toggle</button>
+        </header>
+        <Drawer
+          className={classNames({ open })}
+          expand={open}
+          menuItems={sampleMenuItems}
+          showSearchOnMobile={true}
+          searchPlaceholder={'Search here...'}
+        >
+          {sampleUserProfile}
+        </Drawer>
+        <article onClick={() => setOpen(false)}>
+          <p>body</p>
+          <p>body</p>
+          <p>body</p>
+          <p>body</p>
+        </article>
+      </DashboardLayout>
+    );
+  },
+  args: {},
 };

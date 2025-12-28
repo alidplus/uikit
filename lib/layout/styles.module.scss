@@ -9,19 +9,34 @@
   @media only screen and (min-width: 568px) {
     grid-template-columns: min-content 1fr;
     grid-template-rows: min-content 1fr min-content;
-    grid-template-areas: "aside header" "aside article" "aside footer";
+    grid-template-areas: "header header" "aside article" "aside footer";
+  }
+  @media only screen and (min-width: 1024px) {
+    grid-template-areas: "brand header" "aside article" "aside footer";
   }
   gap: var(--gap-y) var(--gap-x);
+
+  &>figure {
+    grid-area: brand;
+    height: var(--header-height, 72px);
+    @media only screen and (max-width: 1024px) {
+      display: none!important;
+    }
+  }
   
   &>header {
+    z-index: 2;
     grid-area: header;
+    height: var(--header-height, 72px);
   }
   &>aside {
     z-index: 1;
     grid-area: aside;
     width: 64px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     
     @media only screen and (max-width: 568px) {
+      padding-top: var(--header-height, 72px);
       overflow-x: clip;
       overflow-y: auto;
       height: 100vh;
@@ -30,16 +45,6 @@
       max-width: 90vw;
       transform: translateX(-100%);
       transition: transform 0.3s ease;
-    }
-    @media only screen and (min-width: 1024px) {
-      width: 260px;
-      overflow-x: clip;
-      overflow-y: auto;
-    }
-    // @media only screen and (min-width: 1440px) {
-    // }
-    @media only screen and (min-width: 1920px) {
-      width: 300px;
     }
   }
   &>article {
@@ -59,12 +64,22 @@
     }
 
     @media only screen and (min-width: 568px) and (max-width: 1024px) {
-      aside>div {
-        transition: all 0.3s ease;
+      aside>nav {
         width: 100%;
       }
-      aside.open>div {
+      aside.open>nav {
         width: 260px;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
+      aside.open {
+        width: 260px;
+      }
+    }
+    @media only screen and (min-width: 1920px) {
+      aside.open {
+        width: 300px;
       }
     }
   }

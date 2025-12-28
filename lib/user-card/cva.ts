@@ -1,13 +1,18 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 import css from './styles.module.scss';
 
-export const variants = cva('', {
+const sizesConfig = {
+  sm: css.small,
+  lg: css.large,
+} as const;
+
+export const variants = cva(css.root, {
   variants: {
-    expand: {
-      true: css.expand,
-    },
+    size: sizesConfig,
   },
   defaultVariants: {},
 });
 
 export type IVariants = VariantProps<typeof variants>;
+
+export const sizeOptions = Object.keys(sizesConfig);
