@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-themes',
   ],
+  staticDirs: [{ from: '../public', to: '/' }],
   framework: '@storybook/react-vite',
 };
 

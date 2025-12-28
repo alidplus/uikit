@@ -22,7 +22,7 @@ const meta: Meta<typeof Avatar> = {
   },
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#story-args
   args: {
-    src: 'https://picsum.photos/200',
+    src: '/avatar.jpg',
   },
 };
 
