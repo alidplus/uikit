@@ -1,0 +1,17 @@
+import { Story, Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as Stories from './stories';
+
+<Meta of={Stories} />
+
+## Variants
+
+<Canvas of={Stories.Default} />
+<Canvas of={Stories.Desktop} />
+<Canvas of={Stories.Tablet} />
+<Canvas of={Stories.Mobile} />
+
+## States
+
+<Canvas of={Stories.WithoutNotificationBadge} />
+<Canvas of={Stories.WithAllActions} />
+<Canvas of={Stories.Minimal} />

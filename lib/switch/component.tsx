@@ -1,6 +1,6 @@
-import { variants, type IVariants } from './cva';
 import cn from 'classnames';
-import { type ComponentProps, type ReactNode, useId } from 'react';
+import { useId, type ComponentProps, type ReactNode } from 'react';
+import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
 interface Props extends Omit<ComponentProps<'input'>, 'size'> {
@@ -24,7 +24,7 @@ export function Switch({
   const switchId = id || generatedId;
   const isChecked = restProps.checked ?? restProps.defaultChecked;
   const isDisabled = restProps.disabled;
-  
+
   const switchClassName = cn(
     css.switch,
     variants({
@@ -36,13 +36,10 @@ export function Switch({
     },
     extClassName,
   );
-  
-  const wrapperClassName = cn(
-    css.root,
-    {
-      [css.withLabel]: !!label,
-    },
-  );
+
+  const wrapperClassName = cn(css.root, {
+    [css.withLabel]: !!label,
+  });
 
   return (
     <div className={wrapperClassName}>
@@ -59,15 +56,10 @@ export function Switch({
           className={switchClassName}
           {...restProps}
         />
-        {text && (
-          <span className={css.text}>
-            {text}
-          </span>
-        )}
+        {text && <span className={css.text}>{text}</span>}
       </div>
     </div>
   );
 }
 
 Switch.displayName = 'Switch';
-

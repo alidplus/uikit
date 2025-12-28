@@ -1,0 +1,329 @@
+.root {
+  background-color: #151515;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  min-height: 72px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+// Sidebar Toggle Button
+.sidebarButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background: none;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  color: #d6d6d6;
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+}
+
+.sidebarIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  position: relative;
+}
+
+.desktopIcon {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.mobileIcon {
+  display: block;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+// Desktop Right Section (groups all right-side elements)
+.desktopRightSection {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+
+  @media (min-width: 1024px) {
+    display: flex;
+  }
+}
+
+// Desktop Actions Section
+.desktopActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// Action Buttons
+.actionButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 8px 16px 8px 20px;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  min-width: 144px;
+
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+}
+
+.actionPrimary {
+  background-color: #b5ff00;
+  color: #151515;
+
+  &:hover:not(:disabled) {
+    background-color: #c5ff33;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #a5e600;
+  }
+}
+
+.actionSecondary {
+  background-color: #1f1f1f;
+  color: #737373;
+
+  &:hover:not(:disabled) {
+    background-color: #292929;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #2a2a2a;
+  }
+}
+
+.actionTertiary {
+  background-color: transparent;
+  color: #ffffff;
+  min-width: auto;
+  padding: 8px 16px;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+.actionLabel {
+  color: inherit;
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: inherit;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+// Dropdown Buttons
+.dropdownButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px;
+  padding: 8px 16px 8px 20px;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+}
+
+.dropdownLabel {
+  color: inherit;
+}
+
+.dropdownIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: currentColor;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// Logo Section (Tablet/Mobile)
+.logoSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}
+
+// User Avatar Section (Desktop)
+.userAvatarSection {
+  display: flex;
+  align-items: center;
+}
+
+// Icons Section
+.iconsSection {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+// Icon Buttons
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 4px;
+  background: none;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  color: #a3a3a3;
+  transition: background-color 0.15s ease;
+  position: relative;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  &:active {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #b5ff00;
+    outline-offset: 2px;
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// Notification Badge
+.notificationBadge {
+  position: absolute;
+  top: 5px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background-color: #b5ff00;
+  border: 1px solid #b5ff00;
+  border-radius: 4px;
+}
+
+// Hide desktop-only icons on tablet/mobile
+@media (max-width: 1023px) {
+  .iconsSection {
+    .iconButton:nth-child(2),
+    .iconButton:nth-child(3) {
+      display: none;
+    }
+  }
+}
+

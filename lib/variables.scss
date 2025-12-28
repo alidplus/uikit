@@ -1,4 +1,4 @@
-@import 'reset';
-@import 'primitives';
-@import 'semantic';
-@import 'structure';
+@use 'reset';
+@use 'primitives' as *;
+@use 'semantic' as *;
+@use 'structure' as *;
