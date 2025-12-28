@@ -1,3 +1,4 @@
+import { ArrowDown } from '@solar-icons/react';
 import cn from 'classnames';
 import { useEffect, useId, useRef, useState, type ComponentProps, type ReactNode } from 'react';
 import { variants, type IVariants } from './cva';
@@ -125,24 +126,7 @@ export function Filter({
         >
           <span className={css.optionsText}>{selectedOption?.label || 'All'}</span>
           <span className={css.arrowIcon} aria-hidden="true">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={cn(css.arrow, {
-                [css.arrowUp]: open,
-              })}
-            >
-              <path
-                d="M4 6L8 10L12 6"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ArrowDown />
           </span>
         </button>
       </div>

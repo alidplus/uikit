@@ -52,6 +52,15 @@ const paddingConfig = {
   xl: padding.xl,
 } as const;
 
+const gapConfig = {
+  none: flex.none,
+  xs: flex.xs,
+  sm: flex.sm,
+  md: flex.md,
+  lg: flex.lg,
+  xl: flex.xl,
+} as const;
+
 const variantsConfig = {
   primary: variant.primary,
 } as const;
@@ -60,6 +69,7 @@ export const sharedVariants = cva('', {
   variants: {
     variant: variantsConfig,
     pad: paddingConfig,
+    gap: gapConfig,
     level: shadowsConfig,
     border: bordersConfig,
     rounded: roundedConfig,
@@ -70,6 +80,7 @@ export const sharedVariants = cva('', {
 export type ISharedVariants = VariantProps<typeof sharedVariants>;
 
 export const sharedArgTypes = {
+  gap: { control: 'select', options: Object.keys(gapConfig) },
   pad: { control: 'select', options: Object.keys(paddingConfig) },
   level: { control: 'select', options: Object.keys(shadowsConfig) },
   border: { control: 'select', options: Object.keys(bordersConfig) },

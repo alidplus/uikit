@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useId, type ComponentProps, type ReactNode } from 'react';
+import { CheckCircle, DangerCircle } from '../icons';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
@@ -69,71 +70,7 @@ export function Textarea({
         {showHint && (hint || error) && (
           <div className={css.hint} id={hintId}>
             <span className={css.hintIcon} aria-hidden="true">
-              {hasError ? (
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="8"
-                    cy="8"
-                    r="7"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8 5V8"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8 11H8.01"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="8"
-                    cy="8"
-                    r="7"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8 12V8"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M8 4H8.01"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              )}
+              {hasError ? <DangerCircle /> : <CheckCircle />}
             </span>
             <span
               className={cn(css.hintText, {

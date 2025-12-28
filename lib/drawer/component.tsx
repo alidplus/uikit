@@ -1,4 +1,3 @@
-import { SolarProvider } from '@solar-icons/react';
 import cn from 'classnames';
 import {
   useCallback,
@@ -7,6 +6,7 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from 'react';
+import { Magnifer, SolarProvider } from '../icons';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
@@ -106,28 +106,7 @@ export function Drawer({
                   title="Search"
                 >
                   <span className={css.searchIcon} aria-hidden="true">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M21 21L16.65 16.65"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <Magnifer />
                   </span>
                 </button>
                 <input

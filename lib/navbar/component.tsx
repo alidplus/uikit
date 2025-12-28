@@ -1,5 +1,7 @@
 import cn from 'classnames';
 import { type ComponentProps, type ReactNode } from 'react';
+import { AltArrowDown, Bell, Global, HamburgerMenu, Magnifer, Moon, Siderbar } from '../icons';
+import { Button } from '../main';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
@@ -53,41 +55,22 @@ export function Navbar({
     <nav className={className} {...restProps}>
       <div className={css.container}>
         {/* Left Section - Sidebar Toggle */}
-        <button
+        <Button
           type="button"
+          variant="secondary"
           className={css.sidebarButton}
           onClick={onSidebarToggle}
           aria-label="Toggle sidebar"
-        >
-          <span className={css.sidebarIcon} aria-hidden="true">
-            {/* Desktop: Sidebar icon */}
-            <svg
-              className={css.desktopIcon}
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect x="3" y="6" width="18" height="1.5" rx="0.75" fill="currentColor" />
-              <rect x="3" y="11.25" width="18" height="1.5" rx="0.75" fill="currentColor" />
-              <rect x="3" y="16.5" width="18" height="1.5" rx="0.75" fill="currentColor" />
-            </svg>
-            {/* Tablet/Mobile: Hamburger menu */}
-            <svg
-              className={css.mobileIcon}
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect x="3" y="6" width="18" height="1.5" rx="0.75" fill="currentColor" />
-              <rect x="3" y="11.25" width="18" height="1.5" rx="0.75" fill="currentColor" />
-              <rect x="3" y="16.5" width="18" height="1.5" rx="0.75" fill="currentColor" />
-            </svg>
-          </span>
-        </button>
+          icStart={
+            <>
+              {/* Desktop: Sidebar icon */}
+              <Siderbar className={css.desktopIcon} />
+              {/* Tablet/Mobile: Hamburger menu */}
+              <HamburgerMenu className={css.mobileIcon} />
+            </>
+          }
+          iconOnly
+        />
 
         {/* Tablet/Mobile: Logo */}
         <div className={css.logoSection}>{logo}</div>
@@ -120,134 +103,78 @@ export function Navbar({
               >
                 <span className={css.dropdownLabel}>{dropdown.label}</span>
                 <span className={css.dropdownIcon} aria-hidden="true">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M4 6L8 10L12 6"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <AltArrowDown />
                 </span>
               </button>
             ))}
           </div>
 
           {/* User Avatar */}
-          {userAvatar && <div className={css.userAvatarSection}>{userAvatar}</div>}
 
           {/* Icons */}
           <div className={css.iconsSection}>
+            {userAvatar && (
+              <Button
+                type="button"
+                onClick={onNotificationClick}
+                aria-label="Notifications"
+                variant="tertiary"
+                size="sm"
+                iconOnly
+                className={css.userAvatarSection}
+                icStart={userAvatar}
+              ></Button>
+            )}
+            {/* Desktop: Magnifer Icon */}
+            <Button
+              type="button"
+              className={css.iconButton}
+              variant="tertiary"
+              size="sm"
+              iconOnly
+              aria-label="Language"
+              icStart={<Magnifer />}
+            />
+
             {/* Notification Icon */}
-            <button
+            <Button
               type="button"
               className={css.iconButton}
               onClick={onNotificationClick}
               aria-label="Notifications"
+              variant="tertiary"
+              size="sm"
+              iconOnly
+              icStart={<Bell />}
             >
-              <span className={css.icon} aria-hidden="true">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M13.73 21C13.5542 21.3031 13.3019 21.5547 12.9982 21.7295C12.6946 21.9044 12.3504 21.9965 12 21.9965C11.6496 21.9965 11.3054 21.9044 11.0018 21.7295C10.6982 21.5547 10.4458 21.3031 10.27 21"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
               {hasNotificationBadge && (
                 <span className={css.notificationBadge} aria-hidden="true" />
               )}
-            </button>
+            </Button>
 
             {/* Desktop: Globe Icon */}
-            <button
+            <Button
               type="button"
               className={css.iconButton}
+              variant="tertiary"
+              size="sm"
+              iconOnly
               onClick={onGlobeClick}
               aria-label="Language"
-            >
-              <span className={css.icon} aria-hidden="true">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <circle
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M2 12H22"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 2C14.5013 4.73835 15.9228 8.29203 16 12C15.9228 15.708 14.5013 19.2616 12 22C9.49872 19.2616 8.07725 15.708 8 12C8.07725 8.29203 9.49872 4.73835 12 2Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
+              icStart={<Global />}
+            />
 
             {/* Desktop: Theme Icon */}
-            <button
+            <Button
               type="button"
               className={css.iconButton}
+              variant="tertiary"
+              size="sm"
+              iconOnly
               onClick={onThemeClick}
               aria-label="Theme"
-            >
-              <span className={css.icon} aria-hidden="true">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
+              icStart={<Moon />}
+            />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Drawer } from './component';
-import { sampleLogo, sampleMenuItems, sampleUserProfile } from './sample';
+import { navbarLogo, sampleMenuItems, sampleUserProfile } from './sample';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta: Meta<typeof Drawer> = {
@@ -19,7 +19,7 @@ const meta: Meta<typeof Drawer> = {
   },
   args: {
     expand: false,
-    logo: sampleLogo,
+    logo: navbarLogo,
     menuItems: sampleMenuItems,
     children: sampleUserProfile,
     showSearchOnMobile: true,

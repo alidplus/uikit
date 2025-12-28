@@ -9,6 +9,7 @@ import {
   Trade,
   Widget2,
 } from '../icons';
+import { Avatar } from '../main';
 import { UserCard } from '../user-card/component';
 import type { MenuItem } from './component';
 
@@ -67,7 +68,7 @@ export const sampleMenuItems: MenuItem[][] = [
   ],
 ];
 
-export const sampleLogo = (
+export const sidebarLogo = (
   <figure
     style={{
       width: '100%',
@@ -75,13 +76,29 @@ export const sampleLogo = (
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: '#151515',
-      padding: 8,
     }}
   >
-    <img src="/logo-dark.png" alt="RVA" style={{ height: '100%', objectFit: 'contain' }} />
+    <img src="/logo.webp" alt="RVA" style={{ height: '100%', objectFit: 'contain' }} />
+  </figure>
+);
+
+export const navbarLogo = (
+  <figure
+    style={{
+      width: '100%',
+      height: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#151515',
+    }}
+  >
+    <img src="/logo.webp" alt="RVA" style={{ height: '100%', objectFit: 'contain' }} />
   </figure>
 );
 
 export const sampleUserProfile = (
   <UserCard avatarSrc="/avatar.jpg" name="John Doe" email="john.doe@example.com" />
 );
+
+export const sampleUserAvatar = <Avatar name="John Doe" src="/avatar.jpg" size="sm" />;

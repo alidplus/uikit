@@ -1,3 +1,4 @@
+import { ArrowDown } from '@solar-icons/react';
 import cn from 'classnames';
 import {
   useId,
@@ -67,24 +68,7 @@ export function Faq({
       >
         <span className={css.question}>{question}</span>
         <span className={css.icon} aria-hidden="true">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={cn(css.arrowIcon, {
-              [css.arrowUp]: open,
-            })}
-          >
-            <path
-              d="M6 9L12 15L18 9"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowDown />
         </span>
       </button>
       {open && (

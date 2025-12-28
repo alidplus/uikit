@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useEffect, useId, useRef, useState, type ComponentProps, type ReactNode } from 'react';
+import { ArrowDown, InfoCircle } from '../icons';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
@@ -164,24 +165,7 @@ export function Dropdown({
             )}
           </span>
           <span className={css.iconEnd} aria-hidden="true">
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className={cn(css.arrowIcon, {
-                [css.arrowUp]: open,
-              })}
-            >
-              <path
-                d="M6 9L12 15L18 9"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ArrowDown />
           </span>
         </button>
         {open && !disabled && (
@@ -222,37 +206,7 @@ export function Dropdown({
       {showHint && hint && (
         <div className={css.hint}>
           <span className={css.hintIcon} aria-hidden="true">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="8"
-                cy="8"
-                r="7"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 5V8"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 11H8.01"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <InfoCircle />
           </span>
           <span className={cn(css.hintText, { [css.hintDisabled]: disabled })}>{hint}</span>
         </div>

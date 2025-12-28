@@ -54,27 +54,22 @@ export function Button({
       loading: loading,
       hasIconStart: hasIconStart,
       hasIconEnd: hasIconEnd,
-      iconOnly: iconOnly,
+      iconOnly,
     }),
     extClassName,
   );
 
-  const renderIcon = (icon: ReactNode | string) => {
-    if (!icon) return null;
-
-    // Support for React components or JSX
-    return <SolarProvider value={{ size: 20 }}>{icon}</SolarProvider>;
-  };
-
   return (
     <button className={className} {...btnProps}>
-      {loading ? (
-        <span className={css.loadingSpinner} role="status" aria-hidden="true" />
-      ) : (
-        renderIcon(icStart)
-      )}
-      {typeof children === 'string' ? <span>{children}</span> : children}
-      {renderIcon(icEnd)}
+      <SolarProvider value={{ size: 24 }}>
+        {loading ? (
+          <span className={css.loadingSpinner} role="status" aria-hidden="true" />
+        ) : (
+          icStart
+        )}
+        {typeof children === 'string' ? <span>{children}</span> : children}
+        {icEnd}
+      </SolarProvider>
     </button>
   );
 }

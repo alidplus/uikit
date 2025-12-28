@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { type ComponentProps, type PropsWithChildren, type ReactNode } from 'react';
+import { CheckCircle, DangerCircle, History } from '../icons';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
 
@@ -36,89 +37,10 @@ export function Badge({
   const defaultIcon = shouldShowDefaultIcon && (
     <>
       {(variant === 'completed' || variant === 'brand') && (
-        <span className={css.icon} aria-hidden="true">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="8"
-              cy="8"
-              r="7"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M5 8L7 10L11 6"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
+        <CheckCircle className={css.icon} size={16} />
       )}
-      {variant === 'pending' && (
-        <span className={css.icon} aria-hidden="true">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="8"
-              cy="8"
-              r="7"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M8 4V8L10 10"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      )}
-      {variant === 'failed' && (
-        <span className={css.icon} aria-hidden="true">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="8"
-              cy="8"
-              r="7"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M5 5L11 11M11 5L5 11"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </span>
-      )}
+      {variant === 'pending' && <History className={css.icon} size={16} />}
+      {variant === 'failed' && <DangerCircle className={css.icon} size={16} />}
     </>
   );
 

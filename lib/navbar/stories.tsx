@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React from 'react';
+import { Avatar } from '../main';
 import { Navbar, type NavbarAction, type NavbarDropdown } from './component';
 
 // Sample logo
@@ -18,17 +19,7 @@ const sampleLogo = React.createElement(
 );
 
 // Sample user avatar
-const sampleUserAvatar = React.createElement('img', {
-  src: 'https://via.placeholder.com/32',
-  alt: 'User avatar',
-  style: {
-    width: '32px',
-    height: '32px',
-    borderRadius: '50%',
-    border: '1px solid #424242',
-    objectFit: 'cover',
-  },
-});
+const sampleUserAvatar = <Avatar name="John Doe" src="/avatar.jpg" size="sm" />;
 
 // Sample actions
 const sampleActions: NavbarAction[] = [

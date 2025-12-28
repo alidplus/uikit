@@ -2,8 +2,17 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import classNames from 'classnames';
 import { useState } from 'react';
-import { sampleLogo, sampleMenuItems, sampleUserProfile } from '../drawer/sample';
+import { MINIMAL_VIEWPORTS } from 'storybook/viewport';
+import { Container } from '../container/component';
+import {
+  navbarLogo,
+  sampleMenuItems,
+  sampleUserAvatar,
+  sampleUserProfile,
+  sidebarLogo,
+} from '../drawer/sample';
 import { Drawer, Paper } from '../main';
+import { Navbar } from '../navbar/component';
 import { DashboardLayout } from './component';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
@@ -13,6 +22,29 @@ const meta: Meta<typeof DashboardLayout> = {
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'fullscreen',
+
+    viewport: {
+      defaultViewport: 'desktop',
+      options: {
+        desktopXLarge: {
+          name: 'X Large Desktop',
+          styles: {
+            height: '1373px',
+            width: '2560px',
+          },
+          type: 'desktop',
+        },
+        desktopLarge: {
+          name: 'Large Desktop',
+          styles: {
+            height: '1024px',
+            width: '1440px',
+          },
+          type: 'desktop',
+        },
+        ...MINIMAL_VIEWPORTS,
+      },
+    },
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
@@ -80,9 +112,14 @@ export const WithToggle: Story = {
     const [open, setOpen] = useState(false);
     return (
       <DashboardLayout>
-        {sampleLogo}
+        {sidebarLogo}
         <header style={{ background: 'gray' }}>
-          <button onClick={() => setOpen(!open)}>Toggle</button>
+          <Navbar
+            onSidebarToggle={() => setOpen(!open)}
+            logo={navbarLogo}
+            userAvatar={sampleUserAvatar}
+            hasNotificationBadge
+          />
         </header>
         <Drawer
           className={classNames({ open })}
@@ -94,11 +131,40 @@ export const WithToggle: Story = {
           {sampleUserProfile}
         </Drawer>
         <article onClick={() => setOpen(false)}>
-          <p>body</p>
-          <p>body</p>
-          <p>body</p>
-          <p>body</p>
+          <Container pad="md" flex="vertical" gap="lg">
+            <Paper pad="lg" border={1} level="sm" rounded="sm">
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+            </Paper>
+            <Paper pad="lg" border={1} level="sm" rounded="sm">
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+            </Paper>
+            <Paper pad="lg" border={1} level="sm" rounded="sm">
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+            </Paper>
+            <Paper pad="lg" border={1} level="sm" rounded="sm">
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+            </Paper>
+            <Paper pad="lg" border={1} level="sm" rounded="sm">
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+              <p>body</p>
+            </Paper>
+          </Container>
         </article>
+        <footer>prices</footer>
       </DashboardLayout>
     );
   },
