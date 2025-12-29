@@ -23,6 +23,7 @@ export * from './pagination/component';
 export * from './paper/component';
 export * from './popover/component';
 export * from './pressible/component';
+export * from './progress-bar/component';
 export * from './radio/component';
 export * from './select/component';
 export * from './spinner/component';
