@@ -18,7 +18,12 @@ export default defineConfig({
     dts({
       tsconfigPath: './tsconfig.app.json',
       include: ['lib/', 'lib/main.ts'],
-      exclude: ['lib/**/stories.tsx'],
+      exclude: [
+        'lib/**/stories.tsx',
+        'lib/**/stories.ts',
+        'lib/**/*.mdx',
+        'lib/charts/samples/**/*',
+      ],
       outDir: 'dist',
     }),
   ],
@@ -107,6 +112,7 @@ export default defineConfig({
       external: [
         'react',
         'react-dom',
+        'recharts',
         'react/jsx-runtime',
         'react/jsx-dev-runtime',
         'class-variance-authority',

@@ -1,0 +1,75 @@
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  height: 15rem; // h-60
+  gap: 0.5rem; // gap-2
+}
+
+.responsiveContainer {
+  height: 100%;
+}
+
+.areaChart {
+  color: var(--color-tertiary, #6b7280); // text-tertiary
+
+  :global(.recharts-text) {
+    font-size: 0.75rem; // text-xs
+  }
+}
+
+.gridGray100 {
+  color: var(--color-utility-gray-100, #f3f4f6); // text-utility-gray-100
+}
+
+.legendTranslate {
+  transform: translateY(-0.5rem); // -translate-y-2
+}
+
+.labelXs {
+  font-size: 0.75rem; // text-xs
+  font-weight: 500; // font-medium
+}
+
+.cursorBrand600 {
+  stroke: var(--color-utility-brand-600, #2563eb); // stroke-utility-brand-600
+  stroke-width: 2;
+}
+
+.areaClip {
+  :global(.recharts-area-area) {
+    transform: translateY(0.375rem); // translate-y-1.5
+    clip-path: inset(0 0 0.375rem 0); // [clip-path:inset(0_0_6px_0)]
+  }
+}
+
+.activeDot {
+  fill: var(--color-bg-primary, #ffffff); // fill-bg-primary
+  stroke: var(--color-utility-brand-600, #2563eb); // stroke-utility-brand-600
+  stroke-width: 2;
+}
+
+// Color classes
+.colorBrand600 {
+  color: var(--color-utility-brand-600, #2563eb); // text-utility-brand-600
+}
+
+.colorBrand400 {
+  color: var(--color-utility-brand-400, #60a5fa); // text-utility-brand-400
+}
+
+.colorBrand700 {
+  color: var(--color-utility-brand-700, #1d4ed8); // text-utility-brand-700
+}
+
+.colorGray500 {
+  color: var(--color-utility-gray-500, #6b7280); // text-utility-gray-500
+}
+
+.colorGray400 {
+  color: var(--color-utility-gray-400, #9ca3af); // text-utility-gray-400
+}
+
+.colorGray200 {
+  color: var(--color-utility-gray-200, #e5e7eb); // text-utility-gray-200
+}
+

@@ -52,6 +52,7 @@ const entryLines = componentNames
   .join('\n');
 
 // Add icons and main entries
+const chartsEntry = `        charts: path.resolve(__dirname, 'lib/charts/index.ts'),`;
 const iconsEntry = `        icons: path.resolve(__dirname, 'lib/icons/index.ts'),`;
 const mainEntry = `        main: path.resolve(__dirname, 'lib/main.ts'),`;
 
@@ -68,7 +69,7 @@ if (entryStartIndex === -1 || entryEndIndex === -1) {
 const beforeEntry = viteConfigContent.substring(0, entryStartIndex + entryStartMarker.length);
 const afterEntry = viteConfigContent.substring(entryEndIndex);
 
-viteConfigContent = `${beforeEntry}\n${entryLines}\n\n${iconsEntry}\n${mainEntry}\n${afterEntry}`;
+viteConfigContent = `${beforeEntry}\n${entryLines}\n\n${iconsEntry}\n${chartsEntry}\n${mainEntry}\n${afterEntry}`;
 
 writeFileSync(viteConfigPath, viteConfigContent, 'utf-8');
 console.log('✅ Updated vite.config.ts\n');
@@ -88,6 +89,11 @@ const exportsObj = {
     types: './dist/icons/index.d.ts',
     import: './dist/icons.js',
     default: './dist/icons.js',
+  },
+  './charts': {
+    types: './dist/charts/index.d.ts',
+    import: './dist/charts.js',
+    default: './dist/charts.js',
   },
 };
 

@@ -1,0 +1,80 @@
+.radialBarChart {
+  font-weight: 500; // font-medium
+  color: var(--color-tertiary, #6b7280); // text-tertiary
+
+  :global(.recharts-polar-grid) {
+    color: var(--color-utility-gray-100, #f3f4f6); // text-utility-gray-100
+  }
+
+  :global(.recharts-text) {
+    font-size: 0.875rem; // text-sm
+  }
+}
+
+.fillGray100 {
+  fill: var(--color-utility-gray-100, #f3f4f6); // fill-utility-gray-100
+}
+
+.fillCurrent {
+  fill: currentColor; // fill-current
+}
+
+.textTertiary {
+  color: var(--color-tertiary, #6b7280); // text-tertiary
+}
+
+.textPrimary {
+  color: var(--color-primary, #111827); // text-primary
+}
+
+.textXs {
+  font-size: 0.75rem; // text-xs
+  line-height: 1rem;
+}
+
+.textSm {
+  font-size: 0.875rem; // text-sm
+  line-height: 1.25rem;
+}
+
+.textXl {
+  font-size: 1.25rem; // text-xl
+  line-height: 1.75rem;
+}
+
+.textDisplayXs {
+  font-size: 1.5rem; // text-display-xs
+  line-height: 2rem;
+}
+
+.textDisplaySm {
+  font-size: 1.875rem; // text-display-sm
+  line-height: 2.25rem;
+}
+
+.textDisplayMd {
+  font-size: 2.25rem; // text-display-md
+  line-height: 2.5rem;
+}
+
+.fontMedium {
+  font-weight: 500; // font-medium
+}
+
+.fontSemibold {
+  font-weight: 600; // font-semibold
+}
+
+// Color classes
+.colorBrand400 {
+  color: var(--color-utility-brand-400, #60a5fa); // text-utility-brand-400
+}
+
+.colorBrand600 {
+  color: var(--color-utility-brand-600, #2563eb); // text-utility-brand-600
+}
+
+.colorBrand700 {
+  color: var(--color-utility-brand-700, #1d4ed8); // text-utility-brand-700
+}
+

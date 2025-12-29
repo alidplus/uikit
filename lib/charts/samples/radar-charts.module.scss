@@ -1,0 +1,68 @@
+.radarChart {
+  width: 100%;
+  height: 100%;
+  font-weight: 500; // font-medium
+  color: var(--color-tertiary, #6b7280); // text-tertiary
+
+  :global(.recharts-polar-grid) {
+    color: var(--color-utility-gray-100, #f3f4f6); // text-utility-gray-100
+  }
+
+  :global(.recharts-text) {
+    font-size: 0.875rem; // text-sm
+  }
+}
+
+.gridGray100 {
+  color: var(--color-utility-gray-100, #f3f4f6); // text-utility-gray-100
+}
+
+.fillGray50 {
+  fill: var(--color-utility-gray-50, #f9fafb); // fill-utility-gray-50
+}
+
+.strokeGray200 {
+  stroke: var(--color-utility-gray-200, #e5e7eb); // stroke-utility-gray-200
+}
+
+.stroke1 {
+  stroke-width: 1;
+}
+
+.fillGray700 {
+  fill: var(--color-utility-gray-700, #374151); // fill-utility-gray-700
+}
+
+.textXs {
+  font-size: 0.75rem; // text-xs
+  line-height: 1rem;
+}
+
+.fontMedium {
+  font-weight: 500; // font-medium
+}
+
+.cursorBrand600 {
+  stroke: var(--color-utility-brand-600, #2563eb); // stroke-utility-brand-600
+  stroke-width: 2;
+}
+
+.activeDot {
+  fill: var(--color-bg-primary, #ffffff); // fill-bg-primary
+  stroke: var(--color-utility-brand-600, #2563eb); // stroke-utility-brand-600
+  stroke-width: 2;
+}
+
+// Color classes
+.colorBrand600 {
+  color: var(--color-utility-brand-600, #2563eb); // text-utility-brand-600
+}
+
+.colorPink500 {
+  color: var(--color-utility-pink-500, #ec4899); // text-utility-pink-500
+}
+
+.colorBlueLight500 {
+  color: var(--color-utility-blue-light-500, #0ea5e9); // text-utility-blue-light-500
+}
+

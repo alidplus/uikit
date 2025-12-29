@@ -1,0 +1,37 @@
+.maxW525 {
+  max-width: 13.125rem; // max-w-52.5 (210px)
+}
+
+.maxW625 {
+  max-width: 15.625rem; // max-w-62.5 (250px)
+}
+
+.maxW725 {
+  max-width: 18.125rem; // max-w-72.5 (290px)
+}
+
+.maxW96 {
+  max-width: 24rem; // max-w-96 (384px)
+}
+
+// Color classes
+.colorBrand600 {
+  color: var(--color-utility-brand-600, #2563eb); // text-utility-brand-600
+}
+
+.colorBrand500 {
+  color: var(--color-utility-brand-500, #3b82f6); // text-utility-brand-500
+}
+
+.colorBrand400 {
+  color: var(--color-utility-brand-400, #60a5fa); // text-utility-brand-400
+}
+
+.colorBrand300 {
+  color: var(--color-utility-brand-300, #93c5fd); // text-utility-brand-300
+}
+
+.colorGray200 {
+  color: var(--color-utility-gray-200, #e5e7eb); // text-utility-gray-200
+}
+
