@@ -6,21 +6,13 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/main.umd.cjs",
   "module": "./dist/main.js",
   "types": "./dist/main.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/main.d.ts",
-      "import": "./dist/main.js",
-      "require": "./dist/main.umd.cjs",
-      "default": "./dist/main.js"
-    },
-    "./style.css": "./dist/main.css"
-  },
   "scripts": {
+    "pre-build": "node scripts/sync-exports.js",
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix",
+    "tsck": "tsc --noEmit",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "gen:tokens": "node scripts/generate-tokens.js"
@@ -83,5 +75,188 @@
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "import": "./dist/main.js",
+      "default": "./dist/main.js"
+    },
+    "./icons": {
+      "types": "./dist/icons/index.d.ts",
+      "import": "./dist/icons.js",
+      "default": "./dist/icons.js"
+    },
+    "./alert": {
+      "types": "./dist/alert/component.d.ts",
+      "import": "./dist/alert.js",
+      "default": "./dist/alert.js"
+    },
+    "./avatar": {
+      "types": "./dist/avatar/component.d.ts",
+      "import": "./dist/avatar.js",
+      "default": "./dist/avatar.js"
+    },
+    "./badge": {
+      "types": "./dist/badge/component.d.ts",
+      "import": "./dist/badge.js",
+      "default": "./dist/badge.js"
+    },
+    "./breadcrumb": {
+      "types": "./dist/breadcrumb/component.d.ts",
+      "import": "./dist/breadcrumb.js",
+      "default": "./dist/breadcrumb.js"
+    },
+    "./buttons": {
+      "types": "./dist/buttons/component.d.ts",
+      "import": "./dist/buttons.js",
+      "default": "./dist/buttons.js"
+    },
+    "./card": {
+      "types": "./dist/card/component.d.ts",
+      "import": "./dist/card.js",
+      "default": "./dist/card.js"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox/component.d.ts",
+      "import": "./dist/checkbox.js",
+      "default": "./dist/checkbox.js"
+    },
+    "./container": {
+      "types": "./dist/container/component.d.ts",
+      "import": "./dist/container.js",
+      "default": "./dist/container.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer/component.d.ts",
+      "import": "./dist/drawer.js",
+      "default": "./dist/drawer.js"
+    },
+    "./dropdown": {
+      "types": "./dist/dropdown/component.d.ts",
+      "import": "./dist/dropdown.js",
+      "default": "./dist/dropdown.js"
+    },
+    "./empty": {
+      "types": "./dist/empty/component.d.ts",
+      "import": "./dist/empty.js",
+      "default": "./dist/empty.js"
+    },
+    "./faq": {
+      "types": "./dist/faq/component.d.ts",
+      "import": "./dist/faq.js",
+      "default": "./dist/faq.js"
+    },
+    "./faq-alert": {
+      "types": "./dist/faq-alert/component.d.ts",
+      "import": "./dist/faq-alert.js",
+      "default": "./dist/faq-alert.js"
+    },
+    "./filter": {
+      "types": "./dist/filter/component.d.ts",
+      "import": "./dist/filter.js",
+      "default": "./dist/filter.js"
+    },
+    "./input": {
+      "types": "./dist/input/component.d.ts",
+      "import": "./dist/input.js",
+      "default": "./dist/input.js"
+    },
+    "./layout": {
+      "types": "./dist/layout/component.d.ts",
+      "import": "./dist/layout.js",
+      "default": "./dist/layout.js"
+    },
+    "./modal": {
+      "types": "./dist/modal/component.d.ts",
+      "import": "./dist/modal.js",
+      "default": "./dist/modal.js"
+    },
+    "./navbar": {
+      "types": "./dist/navbar/component.d.ts",
+      "import": "./dist/navbar.js",
+      "default": "./dist/navbar.js"
+    },
+    "./pagination": {
+      "types": "./dist/pagination/component.d.ts",
+      "import": "./dist/pagination.js",
+      "default": "./dist/pagination.js"
+    },
+    "./paper": {
+      "types": "./dist/paper/component.d.ts",
+      "import": "./dist/paper.js",
+      "default": "./dist/paper.js"
+    },
+    "./popover": {
+      "types": "./dist/popover/component.d.ts",
+      "import": "./dist/popover.js",
+      "default": "./dist/popover.js"
+    },
+    "./pressible": {
+      "types": "./dist/pressible/component.d.ts",
+      "import": "./dist/pressible.js",
+      "default": "./dist/pressible.js"
+    },
+    "./radio": {
+      "types": "./dist/radio/component.d.ts",
+      "import": "./dist/radio.js",
+      "default": "./dist/radio.js"
+    },
+    "./select": {
+      "types": "./dist/select/component.d.ts",
+      "import": "./dist/select.js",
+      "default": "./dist/select.js"
+    },
+    "./spinner": {
+      "types": "./dist/spinner/component.d.ts",
+      "import": "./dist/spinner.js",
+      "default": "./dist/spinner.js"
+    },
+    "./switch": {
+      "types": "./dist/switch/component.d.ts",
+      "import": "./dist/switch.js",
+      "default": "./dist/switch.js"
+    },
+    "./tab-switch": {
+      "types": "./dist/tab-switch/component.d.ts",
+      "import": "./dist/tab-switch.js",
+      "default": "./dist/tab-switch.js"
+    },
+    "./tabbar": {
+      "types": "./dist/tabbar/component.d.ts",
+      "import": "./dist/tabbar.js",
+      "default": "./dist/tabbar.js"
+    },
+    "./table": {
+      "types": "./dist/table/component.d.ts",
+      "import": "./dist/table.js",
+      "default": "./dist/table.js"
+    },
+    "./tabs": {
+      "types": "./dist/tabs/component.d.ts",
+      "import": "./dist/tabs.js",
+      "default": "./dist/tabs.js"
+    },
+    "./tag": {
+      "types": "./dist/tag/component.d.ts",
+      "import": "./dist/tag.js",
+      "default": "./dist/tag.js"
+    },
+    "./textarea": {
+      "types": "./dist/textarea/component.d.ts",
+      "import": "./dist/textarea.js",
+      "default": "./dist/textarea.js"
+    },
+    "./tooltip": {
+      "types": "./dist/tooltip/component.d.ts",
+      "import": "./dist/tooltip.js",
+      "default": "./dist/tooltip.js"
+    },
+    "./user-card": {
+      "types": "./dist/user-card/component.d.ts",
+      "import": "./dist/user-card.js",
+      "default": "./dist/user-card.js"
+    },
+    "./style.css": "./dist/uikit.css"
   }
 }

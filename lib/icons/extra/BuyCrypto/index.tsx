@@ -141,4 +141,3 @@ export const BuyCrypto: Icon = forwardRef<SVGSVGElement, IconProps>((props, ref)
 ));
 
 BuyCrypto.displayName = 'BuyCrypto';
-

@@ -178,4 +178,3 @@ export const Trade: Icon = forwardRef<SVGSVGElement, IconProps>((props, ref) => 
 ));
 
 Trade.displayName = 'Trade';
-

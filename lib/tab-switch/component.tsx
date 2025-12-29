@@ -1,14 +1,8 @@
 import cn from 'classnames';
-import { useId, useState, type ComponentProps, type ReactNode } from 'react';
+import { useId, useState, type ComponentProps } from 'react';
+import type { TabItem } from '../main';
 import { variants, type IVariants } from './cva';
 import css from './styles.module.scss';
-
-export interface TabItem {
-  id: string;
-  label: ReactNode;
-  icon?: ReactNode;
-}
-
 interface Props extends Omit<ComponentProps<'div'>, 'onChange'> {
   tabs: TabItem[];
   value?: string;
