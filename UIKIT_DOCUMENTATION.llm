@@ -1,0 +1,1490 @@
+================================================================================
+                    @ALIDPLUS/UIKIT - COMPLETE DOCUMENTATION
+================================================================================
+
+This document provides comprehensive information about the UI Kit design system
+library, including all components, design tokens, props, usage examples, and
+design variables.
+
+================================================================================
+                            TABLE OF CONTENTS
+================================================================================
+
+1. PROJECT OVERVIEW
+2. INSTALLATION & SETUP
+3. DESIGN TOKENS
+   - Colors (Primitive & Semantic)
+   - Spacing & Layout
+   - Typography
+   - Borders & Radius
+   - Shadows
+4. COMPONENTS REFERENCE
+   - All available components with props
+5. SHARED UTILITIES
+6. ICONS
+7. USAGE EXAMPLES
+
+================================================================================
+1. PROJECT OVERVIEW
+================================================================================
+
+Package Name: @alidplus/uikit
+Version: 0.2.0
+Type: React Component Library (TypeScript)
+Framework: React 18/19
+Styling: SCSS Modules + CSS Variables
+Build Tool: Vite
+Variant System: Class Variance Authority (CVA)
+
+This is a comprehensive UI component library built with React and TypeScript.
+It provides a complete design system with:
+- 35+ reusable components
+- Design tokens for colors, spacing, typography
+- Dark mode support
+- Responsive design utilities
+- Icon library integration
+
+================================================================================
+2. INSTALLATION & SETUP
+================================================================================
+
+INSTALLATION:
+npm install @alidplus/uikit
+
+PEER DEPENDENCIES:
+- react: ^18.0.0 || ^19.0.0
+- react-dom: ^18.0.0 || ^19.0.0
+
+IMPORT STYLES:
+Import the CSS file in your main entry point:
+import '@alidplus/uikit/style.css';
+
+OR import variables:
+import '@alidplus/uikit/variables.scss';
+
+IMPORT COMPONENTS:
+// Import all components
+import { Button, Input, Card, Modal } from '@alidplus/uikit';
+
+// Or import specific components
+import { Button } from '@alidplus/uikit/buttons';
+import { Input } from '@alidplus/uikit/input';
+
+IMPORT ICONS:
+import { CheckCircle, DangerCircle } from '@alidplus/uikit/icons';
+
+================================================================================
+3. DESIGN TOKENS
+================================================================================
+
+3.1 COLOR PRIMITIVES
+-------------------
+
+PRIMARY COLORS (Brand Green):
+- primary-50: #FAFFE4
+- primary-100: #F3FFC4
+- primary-200: #E7FF90
+- primary-300: #D2FF50
+- primary-400-brand: #B5FF00 (Main Brand Color)
+- primary-500: #9DE600
+- primary-600: #79B800
+- primary-700: #5B8B00
+- primary-800: #406300
+- primary-900: #3A5C00
+- primary-950: #182900
+
+GRAY SCALE:
+- gray-0: #FFFFFF (White)
+- gray-25: #FCFCFC
+- gray-50: #FAFAFA
+- gray-100: #F5F5F5
+- gray-200: #E5E5E5
+- gray-300: #D6D6D6
+- gray-400: #A3A3A3
+- gray-500: #737373
+- gray-600: #525252
+- gray-700: #424242
+- gray-800: #292929
+- gray-900: #141414
+- gray-950: #0F0F0F
+- gray-1000: #000000 (Black)
+
+SECONDARY COLORS (Cyan/Blue):
+- secondary-25: #F5FEFF
+- secondary-50: #ECFDFF
+- secondary-100: #CFF9FE
+- secondary-200: #A5F0FC
+- secondary-300: #67E3F9
+- secondary-400: #22CCEE
+- secondary-500: #06AED4
+- secondary-600: #088AB2
+- secondary-700: #0E7090
+- secondary-800: #155B75
+- secondary-900: #164C63
+- secondary-950: #0D2D3A
+
+ERROR COLORS (Red):
+- error-50: #FEF2F1
+- error-100: #FEDEDC
+- error-200: #FEC6C3
+- error-300: #FEB9B4
+- error-400: #FA7A71
+- error-500: #F14D41
+- error-600: #DF3225
+- error-700: #BD2519
+- error-800: #992219
+- error-900: #7A271A
+- error-950: #3F0C08
+
+WARNING COLORS (Yellow/Orange):
+- warn-50: #FEFBE8
+- warn-100: #FEF7C3
+- warn-200: #FEEE95
+- warn-300: #FDE272
+- warn-400: #FAC515
+- warn-500: #EAAA08
+- warn-600: #CA8504
+- warn-700: #A15C07
+- warn-800: #854A0E
+- warn-900: #713B12
+- warn-950: #542C0D
+
+SUCCESS COLORS (Green):
+- success-50: #E6F8F4
+- success-100: #CCF1E8
+- success-200: #99E3D1
+- success-300: #66D5B9
+- success-400: #33C7A2
+- success-500: #01BC8D
+- success-600: #019671
+- success-700: #017155
+- success-800: #014B38
+- success-900: #00261C
+- success-950: #00130E
+
+ALPHA VARIATIONS:
+- alpha-black-10p: rgba(0,0,0,0.1)
+- alpha-black-20p: rgba(0,0,0,0.2)
+- alpha-black-30p: rgba(0,0,0,0.3)
+- alpha-black-40p: rgba(0,0,0,0.4)
+- alpha-black-50p: rgba(0,0,0,0.5)
+- alpha-black-60p: rgba(0,0,0,0.6)
+- alpha-black-70p: rgba(0,0,0,0.7)
+- alpha-black-80p: rgba(0,0,0,0.8)
+- alpha-black-90p: rgba(0,0,0,0.9)
+- alpha-white-10p to alpha-white-90p: Similar for white
+- alpha-error-500: rgba(241, 77, 65, 0.1)
+- alpha-success-500: rgba(1, 188, 141, 0.1)
+- alpha-warn-500: rgba(250, 197, 21, 0.1)
+
+3.2 SEMANTIC COLORS (Light Mode)
+--------------------------------
+
+SURFACE COLORS:
+- surface-main: var(--color-gray-50) - #FAFAFA
+- surface-container: var(--color-gray-0) - #FFFFFF
+- surface-active: var(--color-gray-100) - #F5F5F5
+- surface-brand: var(--color-primary-400-brand) - #B5FF00
+- surface-overlay: var(--color-gray-0) - #FFFFFF
+- surface-error: var(--color-alhpa-error-500) - rgba(241, 77, 65, 0.1)
+- surface-success: var(--color-alhpa-success-500) - rgba(1, 188, 141, 0.1)
+- surface-warning: var(--color-alhpa-warn-500) - rgba(250, 197, 21, 0.1)
+
+TEXT COLORS:
+- text-primary: var(--color-gray-1000) - #000000
+- text-secondary: var(--color-gray-700) - #424242
+- text-tertiary: var(--color-gray-600) - #525252
+- text-inverse: var(--color-gray-0) - #FFFFFF
+- text-disabled: var(--color-gray-400) - #A3A3A3
+- text-on-brand: var(--color-gray-900) - #141414
+- text-brand: var(--color-primary-600) - #79B800
+- text-link: var(--color-secondary-600) - #088AB2
+- text-error: var(--color-error-600) - #DF3225
+- text-success: var(--color-success-600) - #019671
+- text-warning: var(--color-warn-700) - #A15C07
+
+BORDER COLORS:
+- border-default: var(--color-gray-200) - #E5E5E5
+- border-subtle: var(--color-gray-100) - #F5F5F5
+- border-selected: var(--color-gray-900) - #141414
+- border-strong: var(--color-gray-400) - #A3A3A3
+- border-brand: var(--color-primary-400-brand) - #B5FF00
+- border-error: var(--color-error-500) - #F14D41
+- border-success: var(--color-success-500) - #01BC8D
+- border-warning: var(--color-warn-600) - #CA8504
+
+INTERACTION COLORS:
+Brand:
+- bg-brand-default: #B5FF00
+- bg-brand-hover: #9DE600
+- bg-brand-press: #79B800
+- text-on-brand: #141414
+
+Neutral:
+- bg-neutral-default: #F5F5F5
+- bg-neutral-hover: #E5E5E5
+- bg-neutral-press: #D6D6D6
+- text-neutral: #141414
+
+Status:
+- bg-error-hover: #DF3225
+- bg-success-hover: #019671
+
+States:
+- state-disabled-bg: #F5F5F5
+- state-disabled-text: #A3A3A3
+- state-focus-ring: #B5FF00
+
+3.3 SEMANTIC COLORS (Dark Mode)
+-------------------------------
+
+Dark mode is activated via [data-theme="dark"] attribute.
+
+SURFACE COLORS (Dark):
+- surface-main: var(--color-gray-900) - #141414
+- surface-container: var(--color-gray-800) - #292929
+- surface-active: var(--color-gray-700) - #424242
+- surface-overlay: var(--color-gray-600) - #525252
+
+TEXT COLORS (Dark):
+- text-primary: var(--color-gray-0) - #FFFFFF
+- text-secondary: var(--color-gray-300) - #D6D6D6
+- text-tertiary: var(--color-gray-400) - #A3A3A3
+- text-disabled: var(--color-gray-500) - #737373
+- text-link: var(--color-secondary-400) - #22CCEE
+- text-error: var(--color-error-400) - #FA7A71
+- text-success: var(--color-success-400) - #33C7A2
+- text-warning: var(--color-warn-400) - #FAC515
+
+BORDER COLORS (Dark):
+- border-default: var(--color-gray-700) - #424242
+- border-subtle: var(--color-gray-800) - #292929
+- border-selected: var(--color-gray-0) - #FFFFFF
+- border-strong: var(--color-gray-600) - #525252
+
+3.4 SPACING TOKENS
+-----------------
+
+SPACING SCALE:
+- spacing-none: 0px
+- spacing-3xs: 4px
+- spacing-2xs: 8px
+- spacing-xs: 12px
+- spacing-s: 16px
+- spacing-m: 20px
+- spacing-lg: 24px
+- spacing-xl: 28px
+- spacing-2xl: 32px
+- spacing-3xl: 36px
+- spacing-4xl: 40px
+- spacing-5xl: 48px
+- spacing-6xl: 56px
+
+PADDING TOKENS:
+- padding-xs: 4px (spacing-3xs)
+- padding-sm: 12px (spacing-xs)
+- padding-md: 16px (spacing-s)
+- padding-lg: 24px (spacing-lg)
+
+GAP TOKENS:
+- gap-xs: 4px
+- gap-sm: 8px
+- gap-md: 16px
+- gap-lg: 24px
+- gap-xl: 32px
+
+LAYOUT MARGINS:
+- layout-margin-mobile: 16px
+- layout-margin-desktop: 32px
+- layout-gutter: 20px
+
+3.5 BORDER TOKENS
+----------------
+
+BORDER WIDTHS:
+- border-width-thin: 1px
+- border-width-bold: 2px
+- border-s: 1px
+- border-m: 2px
+- border-l: 4px
+
+3.6 RADIUS TOKENS
+---------------
+
+- radius-none: 0px
+- radius-2xs: 4px
+- radius-xs: 6px
+- radius-sm: 8px
+- radius-md: 12px
+- radius-lg: 16px
+- radius-xl: 20px
+- radius-2xl: 24px
+- radius-3xl: 32px
+- radius-rounded: 999px (Full circle)
+
+COMPONENT RADIUS:
+- radius-component-sm: 6px
+- radius-component-md: 8px
+- radius-container-outer: 32px
+- radius-container-inner: 24px
+- radius-full: 999px
+
+3.7 TYPOGRAPHY TOKENS
+--------------------
+
+FONT FAMILY:
+- font-family: Roboto
+
+FONT WEIGHTS:
+- font-weight-Regular: 400
+- font-weight-Medium: 500
+- font-weight-SemiBold: 600
+- font-weight-Bold: 700
+
+FONT SIZES:
+- font-size-12: 12px
+- font-size-14: 14px
+- font-size-16: 16px
+- font-size-18: 18px
+- font-size-20: 20px
+- font-size-24: 24px
+- font-size-28: 28px
+- font-size-32: 32px
+- font-size-36: 32px
+- font-size-40: 40px
+- font-size-56: 56px
+- font-size-72: 72px
+- font-size-88: 88px
+
+LINE HEIGHTS:
+- line-height-16: 16px
+- line-height-18: 18px
+- line-height-20: 20px
+- line-height-24: 24px
+- line-height-28: 28px
+- line-height-32: 32px
+- line-height-36: 36px
+- line-height-40: 40px
+- line-height-44: 44px
+- line-height-48: 48px
+- line-height-64: 64px
+- line-height-80: 80px
+- line-height-96: 96px
+
+3.8 SHADOW TOKENS
+----------------
+
+Available shadow levels (used via shared variants):
+- none: No shadow
+- xs: Extra small shadow
+- sm: Small shadow
+- md: Medium shadow
+- lg: Large shadow
+- xl: Extra large shadow
+
+3.9 LAYOUT & GRID TOKENS
+-----------------------
+
+BREAKPOINTS:
+- Mobile: 390px width, 844px height
+- Tablet: 768px width, 1024px height
+- Desktop M: 1440px width
+- Desktop LG: 1920px width
+- 4K: 2560px width
+
+GRID SYSTEM:
+Mobile (< 568px):
+- grid-columns: 4px
+- grid-gutter: 16px
+- grid-margin: 16px
+- sidebar-width: 0px
+
+Tablet (568px - 1024px):
+- grid-columns: 8px
+- grid-gutter: 20px
+- grid-margin: 24px
+- sidebar-width: 64px
+
+Desktop 1440px (1024px - 1440px):
+- grid-columns: 12px
+- grid-gutter: 24px
+- grid-margin: 32px
+- sidebar-width: 260px
+
+Desktop 1920px (1440px - 1920px):
+- grid-columns: 12px
+- grid-gutter: 24px
+- grid-margin: 32px
+- sidebar-width: 260px
+
+4K/XL (>= 1920px):
+- grid-columns: 12px
+- grid-gutter: 32px
+- grid-margin: 64px
+- sidebar-width: 320px
+
+================================================================================
+4. COMPONENTS REFERENCE
+================================================================================
+
+4.1 BUTTON
+---------
+
+Import: import { Button } from '@alidplus/uikit';
+
+PROPS:
+- variant?: 'primary' | 'secondary' | 'tertiary' | 'destructive'
+- size?: 'sm' | 'lg'
+- loading?: boolean
+- outline?: boolean
+- block?: boolean
+- iconOnly?: boolean
+- icStart?: ReactNode (Icon at start)
+- icEnd?: ReactNode (Icon at end)
+- rounded?: 'none' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rounded'
+- pad?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+- level?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' (shadow)
+- border?: 'none' | '1' | '2' | '3' | '4' | '5'
+- flex?: 'vertical' | 'horizontal' | 'center'
+- disabled?: boolean
+- All standard button HTML attributes
+
+USAGE:
+<Button variant="primary" size="lg" icStart={<Icon />}>
+  Click Me
+</Button>
+
+<Button variant="secondary" outline loading>
+  Loading...
+</Button>
+
+<Button iconOnly icStart={<Icon />} />
+
+4.2 INPUT
+--------
+
+Import: import { Input } from '@alidplus/uikit';
+
+PROPS:
+- size?: 'sm' | 'default' | 'lg'
+- label?: ReactNode
+- hint?: ReactNode
+- error?: ReactNode
+- iconStart?: ReactNode
+- iconEnd?: ReactNode
+- suffix?: ReactNode
+- showLabel?: boolean (default: true)
+- showHint?: boolean (default: true)
+- disabled?: boolean
+- All standard input HTML attributes
+
+USAGE:
+<Input
+  label="Email"
+  placeholder="Enter your email"
+  hint="We'll never share your email"
+/>
+
+<Input
+  label="Password"
+  type="password"
+  error="Password is required"
+  iconStart={<LockIcon />}
+/>
+
+4.3 CARD
+-------
+
+Import: import { Card } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<Card>
+  <h2>Card Title</h2>
+  <p>Card content</p>
+</Card>
+
+4.4 MODAL
+--------
+
+Import: import { Modal } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<Modal size="lg">
+  <h2>Modal Title</h2>
+  <p>Modal content</p>
+</Modal>
+
+4.5 ALERT
+--------
+
+Import: import { Alert } from '@alidplus/uikit';
+
+PROPS:
+- severity?: 'info' | 'warn' | 'error' | 'alert'
+- variant?: string
+- banner?: boolean
+- onClose?: () => void
+- icon?: ReactNode
+- message?: string
+- important?: true | string
+- cta?: string
+- ctaHref?: string
+- ctaTarget?: string
+- level?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' (shadow)
+- border?: 'none' | '1' | '2' | '3' | '4' | '5'
+- rounded?: 'none' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rounded'
+- pad?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+- All standard div HTML attributes
+
+USAGE:
+<Alert
+  severity="error"
+  message="Something went wrong"
+  onClose={() => console.log('closed')}
+/>
+
+<Alert
+  severity="info"
+  important="Notice"
+  message="This is important information"
+  cta="Learn More"
+  ctaHref="/learn"
+/>
+
+4.6 BADGE
+--------
+
+Import: import { Badge } from '@alidplus/uikit';
+
+PROPS:
+- variant?: 'default' | 'brand' | 'completed' | 'pending' | 'failed'
+- outline?: boolean
+- icon?: ReactNode
+- children?: ReactNode
+- All standard span HTML attributes
+
+USAGE:
+<Badge variant="completed">Completed</Badge>
+<Badge variant="pending" outline>Pending</Badge>
+<Badge variant="brand" icon={<Icon />}>New</Badge>
+
+4.7 AVATAR
+---------
+
+Import: import { Avatar } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- name?: string (for placeholder initials)
+- src?: string (image URL)
+- level?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' (shadow)
+- border?: 'none' | '1' | '2' | '3' | '4' | '5'
+- rounded?: 'none' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rounded'
+- pad?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' (default: 'none')
+- All standard img HTML attributes
+
+USAGE:
+<Avatar src="/avatar.jpg" name="John Doe" />
+<Avatar name="Jane Smith" rounded="rounded" />
+
+4.8 CHECKBOX
+-----------
+
+Import: import { Checkbox } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- label?: ReactNode
+- indeterminate?: boolean
+- checked?: boolean
+- defaultChecked?: boolean
+- disabled?: boolean
+- id?: string
+- All standard input checkbox HTML attributes
+
+USAGE:
+<Checkbox label="Accept terms" />
+<Checkbox label="Select all" indeterminate />
+<Checkbox checked disabled />
+
+4.9 SWITCH
+---------
+
+Import: import { Switch } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- label?: ReactNode
+- text?: ReactNode
+- checked?: boolean
+- defaultChecked?: boolean
+- disabled?: boolean
+- id?: string
+- All standard input checkbox HTML attributes
+
+USAGE:
+<Switch label="Enable notifications" />
+<Switch text="On/Off" checked />
+
+4.10 DROPDOWN
+------------
+
+Import: import { Dropdown } from '@alidplus/uikit';
+
+PROPS:
+- label?: ReactNode
+- placeholder?: ReactNode (default: 'Placeholder')
+- value?: string
+- defaultValue?: string
+- options: DropdownOption[] (required)
+- onChange?: (value: string) => void
+- onSelect?: (option: DropdownOption) => void
+- required?: boolean
+- hint?: ReactNode
+- showHint?: boolean (default: true)
+- showLabel?: boolean (default: true)
+- iconStart?: ReactNode
+- showIconStart?: boolean (default: true)
+- disabled?: boolean
+- open?: boolean
+- defaultOpen?: boolean
+- controlled?: boolean
+- onOpenChange?: (open: boolean) => void
+- All standard div HTML attributes
+
+INTERFACE DropdownOption:
+- id: string
+- label: ReactNode
+- icon?: ReactNode
+- value?: string
+
+USAGE:
+<Dropdown
+  label="Select Option"
+  placeholder="Choose..."
+  options={[
+    { id: '1', label: 'Option 1', icon: <Icon /> },
+    { id: '2', label: 'Option 2' }
+  ]}
+  onChange={(value) => console.log(value)}
+/>
+
+4.11 PAGINATION
+--------------
+
+Import: import { Pagination } from '@alidplus/uikit';
+
+PROPS:
+- currentPage?: number (default: 1)
+- totalPages?: number (default: 10)
+- onPageChange?: (page: number) => void
+- onPrevious?: () => void
+- onNext?: () => void
+- previousDisabled?: boolean
+- nextDisabled?: boolean
+- type?: 'page-default' | 'card-minimal-right' | 'card-minimal-left' | 'card-minimal-center' | 'card-button-group'
+- shape?: 'circle' | 'square'
+- breakpoint?: 'desktop' | 'mobile'
+- All standard nav HTML attributes
+
+USAGE:
+<Pagination
+  currentPage={1}
+  totalPages={10}
+  onPageChange={(page) => console.log(page)}
+/>
+
+<Pagination
+  type="card-minimal-right"
+  currentPage={5}
+  totalPages={20}
+/>
+
+4.12 TABLE
+---------
+
+Import: import { Table } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<Table>
+  <thead>...</thead>
+  <tbody>...</tbody>
+</Table>
+
+4.13 TABS
+--------
+
+Import: import { Tabs } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<Tabs>
+  <div>Tab content</div>
+</Tabs>
+
+4.14 SELECT
+----------
+
+Import: import { Select } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<Select>
+  <option>Option 1</option>
+  <option>Option 2</option>
+</Select>
+
+4.15 TOOLTIP
+-----------
+
+Import: import { Tooltip } from '@alidplus/uikit';
+
+PROPS:
+- size?: string (component-specific)
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<Tooltip>
+  Tooltip content
+</Tooltip>
+
+4.16 DRAWER
+----------
+
+Import: import { Drawer } from '@alidplus/uikit';
+
+PROPS:
+- expand?: boolean
+- menuItems?: MenuItem[][] (array of menu item groups)
+- searchBar?: ReactNode
+- showSearchOnMobile?: boolean (default: true)
+- onMenuItemClick?: (itemId: string) => void
+- onSearchClick?: () => void
+- searchValue?: string
+- onSearchChange?: (value: string) => void
+- searchPlaceholder?: string (default: 'Search here...')
+- All standard aside HTML attributes
+
+INTERFACE MenuItem:
+- id: string
+- label: string
+- icon?: ReactNode
+- active?: boolean
+- onClick?: () => void
+
+USAGE:
+<Drawer
+  expand={true}
+  menuItems={[
+    [
+      { id: '1', label: 'Home', icon: <HomeIcon />, active: true },
+      { id: '2', label: 'Settings', icon: <SettingsIcon /> }
+    ],
+    [
+      { id: '3', label: 'Profile', icon: <ProfileIcon /> }
+    ]
+  ]}
+  onMenuItemClick={(id) => console.log(id)}
+>
+  <UserProfile />
+</Drawer>
+
+4.17 LAYOUT
+----------
+
+Import: import { DashboardLayout } from '@alidplus/uikit';
+
+PROPS:
+- withSidebar?: boolean
+- className?: string
+- All standard div HTML attributes
+
+USAGE:
+<DashboardLayout>
+  <div>Main content</div>
+</DashboardLayout>
+
+4.18 RADIO
+---------
+
+Import: import { Radio } from '@alidplus/uikit';
+
+PROPS:
+- Standard radio input props
+- Component-specific size variants
+
+USAGE:
+<Radio name="option" value="1" />
+<Radio name="option" value="2" />
+
+4.19 TEXTAREA
+------------
+
+Import: import { Textarea } from '@alidplus/uikit';
+
+PROPS:
+- Standard textarea props
+- Component-specific size variants
+
+USAGE:
+<Textarea placeholder="Enter text..." rows={4} />
+
+4.20 BREADCRUMB
+--------------
+
+Import: import { Breadcrumb } from '@alidplus/uikit';
+
+PROPS:
+- Standard breadcrumb navigation props
+
+USAGE:
+<Breadcrumb>
+  <a href="/">Home</a>
+  <a href="/page">Page</a>
+  <span>Current</span>
+</Breadcrumb>
+
+4.21 TAG
+-------
+
+Import: import { Tag } from '@alidplus/uikit';
+
+PROPS:
+- Standard tag/chip props
+
+USAGE:
+<Tag>Tag Label</Tag>
+
+4.22 POPOVER
+-----------
+
+Import: import { Popover } from '@alidplus/uikit';
+
+PROPS:
+- Standard popover props
+
+USAGE:
+<Popover>
+  <button>Trigger</button>
+  <div>Popover content</div>
+</Popover>
+
+4.23 EMPTY
+---------
+
+Import: import { Empty } from '@alidplus/uikit';
+
+PROPS:
+- Standard empty state props
+
+USAGE:
+<Empty>
+  <p>No data available</p>
+</Empty>
+
+4.24 FAQ
+-------
+
+Import: import { FAQ } from '@alidplus/uikit';
+
+PROPS:
+- FAQ component props
+
+USAGE:
+<FAQ>
+  <FAQ.Item question="Question?" answer="Answer" />
+</FAQ>
+
+4.25 FAQ-ALERT
+-------------
+
+Import: import { FAQAlert } from '@alidplus/uikit';
+
+PROPS:
+- FAQ alert component props
+
+USAGE:
+<FAQAlert>
+  Alert content with FAQ
+</FAQAlert>
+
+4.26 FILTER
+----------
+
+Import: import { Filter } from '@alidplus/uikit';
+
+PROPS:
+- Filter component props
+
+USAGE:
+<Filter>
+  Filter options
+</Filter>
+
+4.27 NAVBAR
+----------
+
+Import: import { Navbar } from '@alidplus/uikit';
+
+PROPS:
+- Navbar component props
+
+USAGE:
+<Navbar>
+  Navigation items
+</Navbar>
+
+4.28 CONTAINER
+-------------
+
+Import: import { Container } from '@alidplus/uikit';
+
+PROPS:
+- Container component props
+
+USAGE:
+<Container>
+  Content
+</Container>
+
+4.29 PAPER
+---------
+
+Import: import { Paper } from '@alidplus/uikit';
+
+PROPS:
+- Paper component props
+
+USAGE:
+<Paper>
+  Paper content
+</Paper>
+
+4.30 PRESSIBLE
+-------------
+
+Import: import { Pressible } from '@alidplus/uikit';
+
+PROPS:
+- Pressible component props (pressable wrapper)
+
+USAGE:
+<Pressible onClick={() => console.log('pressed')}>
+  Pressable content
+</Pressible>
+
+4.31 PROGRESS-BAR
+----------------
+
+Import: import { ProgressBar } from '@alidplus/uikit';
+
+PROPS:
+- Progress bar component props
+
+USAGE:
+<ProgressBar value={50} max={100} />
+
+4.32 SPINNER
+-----------
+
+Import: import { Spinner } from '@alidplus/uikit';
+
+PROPS:
+- Spinner/loading component props
+
+USAGE:
+<Spinner />
+
+4.33 TAB-SWITCH
+--------------
+
+Import: import { TabSwitch } from '@alidplus/uikit';
+
+PROPS:
+- Tab switch component props
+
+USAGE:
+<TabSwitch>
+  Tab options
+</TabSwitch>
+
+4.34 TABBAR
+----------
+
+Import: import { Tabbar } from '@alidplus/uikit';
+
+PROPS:
+- Tabbar component props
+
+USAGE:
+<Tabbar>
+  Tab items
+</Tabbar>
+
+4.35 USER-CARD
+-------------
+
+Import: import { UserCard } from '@alidplus/uikit';
+
+PROPS:
+- User card component props
+
+USAGE:
+<UserCard
+  name="John Doe"
+  email="john@example.com"
+  avatar="/avatar.jpg"
+/>
+
+4.36 CHARTS
+----------
+
+Import: import { Chart } from '@alidplus/uikit/charts';
+
+PROPS:
+- Chart components (using Recharts library)
+
+USAGE:
+<Chart>
+  Chart configuration
+</Chart>
+
+================================================================================
+5. SHARED UTILITIES
+================================================================================
+
+5.1 SHARED VARIANTS
+------------------
+
+All components that support shared variants can use:
+
+- rounded: 'none' | 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'xxxl' | 'rounded'
+- pad: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+- gap: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+- level: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' (shadow)
+- border: 'none' | '1' | '2' | '3' | '4' | '5'
+- flex: 'vertical' | 'horizontal' | 'center'
+- variant: 'primary' (for some components)
+
+USAGE:
+<Button
+  rounded="md"
+  pad="md"
+  level="sm"
+  border="1"
+>
+  Button
+</Button>
+
+5.2 TYPES
+--------
+
+Common TypeScript interfaces:
+
+- IOptionValue<T>: For dropdown/select options
+  - value: T
+  - label?: string
+  - icon?: ReactNode
+  - text?: string
+  - disabled?: boolean
+  - onClick?: VoidFunction
+
+- DataProps<T>: Generic data prop
+  - data: T
+
+- ValueProps<T>: Generic value prop
+  - value?: T
+
+- InputProps<T>: Input with onChange
+  - value?: T
+  - onChange: Dispatch<SetStateAction<T>>
+
+================================================================================
+6. ICONS
+================================================================================
+
+ICON LIBRARY:
+The library uses @solar-icons/react for icons.
+
+IMPORT:
+import { CheckCircle, DangerCircle, ArrowDown } from '@alidplus/uikit/icons';
+
+OR:
+import { CheckCircle } from '@alidplus/uikit/icons';
+
+AVAILABLE ICONS:
+All icons from @solar-icons/react are available, including:
+- CheckCircle
+- DangerCircle
+- DangerTriangle
+- CloseCircle
+- ArrowDown, ArrowUp, ArrowLeft, ArrowRight
+- AltArrowLeft, AltArrowRight
+- Magnifer (Search)
+- InfoCircle
+- History
+- And many more...
+
+CUSTOM ICONS:
+Extra custom icons are also available:
+- BitcoinCard
+- BitcoinConvert
+- BitcoinRefresh
+- BuyCrypto
+- CardCoin
+- Trade
+
+USAGE:
+import { SolarProvider } from '@alidplus/uikit/icons';
+
+<SolarProvider value={{ size: 24 }}>
+  <CheckCircle />
+</SolarProvider>
+
+ICON SIZES:
+Icons can be sized using the SolarProvider or size prop:
+<CheckCircle size={20} />
+<DangerCircle size={16} />
+
+================================================================================
+7. USAGE EXAMPLES
+================================================================================
+
+7.1 BASIC FORM
+-------------
+
+import { Input, Button, Checkbox } from '@alidplus/uikit';
+
+function LoginForm() {
+  return (
+    <form>
+      <Input
+        label="Email"
+        type="email"
+        placeholder="Enter your email"
+        required
+      />
+      <Input
+        label="Password"
+        type="password"
+        placeholder="Enter your password"
+        required
+      />
+      <Checkbox label="Remember me" />
+      <Button variant="primary" block>
+        Sign In
+      </Button>
+    </form>
+  );
+}
+
+7.2 CARD WITH ACTIONS
+--------------------
+
+import { Card, Button, Badge } from '@alidplus/uikit';
+
+function ProductCard() {
+  return (
+    <Card>
+      <h3>Product Name</h3>
+      <Badge variant="brand">New</Badge>
+      <p>Product description</p>
+      <Button variant="primary">Add to Cart</Button>
+    </Card>
+  );
+}
+
+7.3 ALERT WITH ACTIONS
+---------------------
+
+import { Alert } from '@alidplus/uikit';
+
+function NotificationAlert() {
+  return (
+    <Alert
+      severity="info"
+      important="Update Available"
+      message="A new version is available"
+      cta="Update Now"
+      ctaHref="/update"
+      onClose={() => console.log('closed')}
+    />
+  );
+}
+
+7.4 DROPDOWN SELECTION
+---------------------
+
+import { Dropdown } from '@alidplus/uikit';
+import { Icon1, Icon2 } from '@alidplus/uikit/icons';
+
+function CountrySelector() {
+  const countries = [
+    { id: 'us', label: 'United States', icon: <Icon1 /> },
+    { id: 'uk', label: 'United Kingdom', icon: <Icon2 /> },
+  ];
+
+  return (
+    <Dropdown
+      label="Select Country"
+      placeholder="Choose a country"
+      options={countries}
+      onChange={(value) => console.log('Selected:', value)}
+    />
+  );
+}
+
+7.5 PAGINATION
+------------
+
+import { Pagination } from '@alidplus/uikit';
+
+function DataTable() {
+  const [page, setPage] = useState(1);
+
+  return (
+    <div>
+      {/* Table content */}
+      <Pagination
+        currentPage={page}
+        totalPages={10}
+        onPageChange={setPage}
+        type="page-default"
+        shape="circle"
+      />
+    </div>
+  );
+}
+
+7.6 DARK MODE
+------------
+
+To enable dark mode, add data-theme="dark" to your root element:
+
+<html data-theme="dark">
+  <body>
+    {/* Your app */}
+  </body>
+</html>
+
+Or toggle dynamically:
+document.documentElement.setAttribute('data-theme', 'dark');
+
+7.7 USING DESIGN TOKENS
+----------------------
+
+You can use CSS variables directly in your styles:
+
+.my-component {
+  background-color: var(--color-surface-surface-main);
+  color: var(--color-text-text-primary);
+  padding: var(--spacing-padding-padding-md);
+  border-radius: var(--spacing-radius-radius-component-md);
+  border: var(--spacing-border-border-width-thin) solid var(--color-border-border-default);
+}
+
+7.8 RESPONSIVE LAYOUT
+--------------------
+
+import { DashboardLayout, Drawer } from '@alidplus/uikit';
+
+function App() {
+  return (
+    <DashboardLayout>
+      <Drawer
+        expand={true}
+        menuItems={[
+          [
+            { id: '1', label: 'Dashboard', icon: <DashboardIcon /> },
+            { id: '2', label: 'Settings', icon: <SettingsIcon /> }
+          ]
+        ]}
+      />
+      <main>
+        {/* Main content */}
+      </main>
+    </DashboardLayout>
+  );
+}
+
+7.9 COMPONENT COMPOSITION
+------------------------
+
+import { Card, Button, Badge, Avatar } from '@alidplus/uikit';
+
+function UserCard() {
+  return (
+    <Card>
+      <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <Avatar src="/user.jpg" name="John Doe" />
+        <div>
+          <h3>John Doe</h3>
+          <Badge variant="completed">Active</Badge>
+        </div>
+      </div>
+      <Button variant="secondary" block>
+        View Profile
+      </Button>
+    </Card>
+  );
+}
+
+================================================================================
+8. CSS VARIABLES REFERENCE
+================================================================================
+
+All design tokens are available as CSS variables. Use them in your custom styles:
+
+COLORS:
+--color-primary-400-brand
+--color-gray-50, --color-gray-100, etc.
+--color-surface-surface-main
+--color-text-text-primary
+--color-border-border-default
+
+SPACING:
+--spacing-spacing-xs (12px)
+--spacing-spacing-s (16px)
+--spacing-spacing-m (20px)
+--spacing-spacing-lg (24px)
+--spacing-padding-padding-md
+--spacing-gap-gap-md
+
+RADIUS:
+--radius-radius-sm (8px)
+--radius-radius-md (12px)
+--spacing-radius-radius-component-md
+
+BORDERS:
+--spacing-border-border-width-thin (1px)
+--spacing-border-border-width-bold (2px)
+
+TYPOGRAPHY:
+--font-family-Roboto
+--font-weight-Medium (500)
+--font-size-16 (16px)
+--font-line-height-24 (24px)
+
+================================================================================
+9. BEST PRACTICES
+================================================================================
+
+1. Always import the CSS file first:
+   import '@alidplus/uikit/style.css';
+
+2. Use semantic color tokens instead of primitive colors:
+   ✅ var(--color-text-text-primary)
+   ❌ var(--color-gray-1000)
+
+3. Use spacing tokens for consistent spacing:
+   ✅ var(--spacing-spacing-md)
+   ❌ 20px
+
+4. Leverage shared variants for consistent styling:
+   ✅ <Button rounded="md" pad="md" level="sm" />
+   ❌ Custom inline styles
+
+5. Use appropriate component sizes:
+   - 'sm' for compact UIs
+   - 'default' for standard UIs
+   - 'lg' for prominent elements
+
+6. Always provide accessible labels:
+   ✅ <Input label="Email" />
+   ❌ <Input placeholder="Email" />
+
+7. Use icons from the icon library:
+   ✅ import { CheckCircle } from '@alidplus/uikit/icons';
+   ❌ Custom SVG icons
+
+8. Handle dark mode properly:
+   - Test components in both light and dark themes
+   - Use semantic tokens that adapt automatically
+
+================================================================================
+10. COMPONENT EXPORTS
+================================================================================
+
+All components are exported from the main entry point:
+
+import {
+  Alert,
+  Avatar,
+  Badge,
+  Breadcrumb,
+  Button,
+  Card,
+  Checkbox,
+  Container,
+  Drawer,
+  Dropdown,
+  Empty,
+  FAQ,
+  FAQAlert,
+  Filter,
+  Input,
+  Layout,
+  Modal,
+  Navbar,
+  Pagination,
+  Paper,
+  Popover,
+  Pressible,
+  ProgressBar,
+  Radio,
+  Select,
+  Spinner,
+  Switch,
+  TabSwitch,
+  Tabbar,
+  Table,
+  Tabs,
+  Tag,
+  Textarea,
+  Tooltip,
+  UserCard,
+} from '@alidplus/uikit';
+
+Individual component imports:
+import { Button } from '@alidplus/uikit/buttons';
+import { Input } from '@alidplus/uikit/input';
+// etc.
+
+Icons:
+import { CheckCircle, DangerCircle } from '@alidplus/uikit/icons';
+
+================================================================================
+END OF DOCUMENTATION
+================================================================================
+
+For more information, refer to:
+- Component Storybook stories
+- Component source code in lib/ directory
+- Design token files in tokens/ directory
+
+Last Updated: Based on version 0.2.0
+
